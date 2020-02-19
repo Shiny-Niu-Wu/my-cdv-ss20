@@ -1,0 +1,93 @@
+body{
+  background-color: black;
+  font-family: helvetica;
+}
+
+wrapper{
+  margin: 5%;
+  display: grid;
+  grid-template-rows: 10% 15% 70% auto;
+  height: 100vh;
+}
+
+.switchMode{
+  text-align: center;
+  grid-row: 1 / 2;
+}
+
+button{
+  font-size: 35px;
+  background-color: black;
+  color: white;
+  border-color: white;
+  border-width: thick;
+  margin-left: 2%;
+  margin-right: 2%;
+  outline: 0;
+}
+
+button:hover{
+  background-color: white;
+  color: black;
+  border-color: black;
+  cursor: pointer;
+}
+
+input{
+  margin-top: 1%;
+  margin-right: 2%;
+  margin-bottom: 1%;
+  border-width: thick;
+}
+
+::-webkit-input-placeholder{
+  font-size: 25px;
+  border-color: inherit;
+}
+
+/* enlarge the up down buttons in the number input box */
+/* input[type="number"].mod::-webkit-inner-spin-button,
+input[type="number"].mod::-webkit-outer-spin-button {
+  height: 3em;
+} */
+
+.decide{
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 79%;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+  color: black;
+}
+
+#allSquares{
+  grid-row: 3 / 4;
+  margin-left: 15%;
+  margin-right: 15%;
+  color: white;
+}
+
+/* calm mode */
+.squareAlign{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* this is to switch between crazy mode and calm more */
+
+/* crazy mode */
+/* in crazy mode I want to have boxes randomly positioned. */
+/* !!!!!haven't finish!!!!! */
+
+.square{
+  height: 5%;
+  width: 5%;
+  background-color: white;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+}
