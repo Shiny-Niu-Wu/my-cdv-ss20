@@ -9,7 +9,7 @@ body{
 
 wrapper{
   display: grid;
-  grid-template-rows: 30% 70%;
+  grid-template-rows: 40% 60%;
   height: 100vh;
 }
 
@@ -55,17 +55,17 @@ wrapper{
 }
 
 #friends_avg{
-  font-size: 40px;
+  font-size: 30px;
   color: #f4a460;
 }
 
 #my_score{
-  font-size: 40px;
+  font-size: 30px;
   color: #e0b8b0;
 }
 
 #shinyDescription{
-  font-size: 40px;
+  font-size: 30px;
   color: #eeeeee;
   margin-top: 3%;
   text-decoration: underline;
