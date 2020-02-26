@@ -1,0 +1,104 @@
+/* colors based on https://www.color-hex.com/color-palette/38743 */
+
+body{
+  background-color: #ccccff;
+  margin: 3%;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+
+wrapper{
+  display: grid;
+  grid-template-rows: 30% 70%;
+  height: 100vh;
+}
+
+.text{
+  grid-row: 1 / 2;
+  font-family: monospace;
+  text-align: center;
+}
+
+.pageDescription{
+  font-size: 15px;
+  margin-top: 0;
+}
+
+.sentence{
+  display: flex;
+  flex-direction: column;
+}
+
+.identity{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+#friend{
+  text-align: left;
+}
+
+#myself{
+  text-align: right;
+}
+
+.shinyIs{
+  font-size: 10px;
+}
+
+.result_text_num{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#friends_avg{
+  font-size: 40px;
+  color: #f4a460;
+}
+
+#my_score{
+  font-size: 40px;
+  color: #e0b8b0;
+}
+
+#shinyDescription{
+  font-size: 40px;
+  color: #eeeeee;
+  margin-top: 3%;
+  text-decoration: underline;
+}
+
+.bars{
+  grid-row: 2 / 3;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bar{
+  width: 7%;
+  background-color: #e0b8b0;
+  outline: none;
+  border: 0;
+  font-family: monospace;
+  /* padding: 0 0 5px 5px;
+  text-align: left; */
+}
+
+.bar:hover{
+  cursor: pointer;
+  background-color: #f4a460;
+}
+
+/* to rotate the text in the buttons 90 degrees to vertical */
+.bar span {
+  display: inline-block;
+  transform-origin: 0 0;
+  transform: rotate(-90deg);
+  font-size: 10px;
+}
