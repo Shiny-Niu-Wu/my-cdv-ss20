@@ -134,13 +134,13 @@ function gotData(incomingData){
   // ;
 
 //this filters each eye contact by family member, and put each family member's eye contacts into separate objects
-  // byName = Array.from(d3.group(incomingData, d => d.who), ([key, value]) => ({key, value}));
-  // console.log(byName);
-  //
-  // let count = Array.from(d3.rollup(incomingData, v => v.length, d => d.who), ([key, value]) => ({key, value}));
-  // console.log(count);
-  //
-  // return byName;
+  byName = Array.from(d3.group(incomingData, d => d.who), ([key, value]) => ({key, value}));
+  console.log(byName);
+
+  let count = Array.from(d3.rollup(incomingData, v => v.length, d => d.who), ([key, value]) => ({key, value}));
+  console.log(count);
+  
+  return byName;
 }
 
 // viz
@@ -166,14 +166,6 @@ function xLocation(data){
   datapoint = data.no * 75 + 150;
   return datapoint;
 }
-
-// let nameList = [];
-//
-// function createNameList(data){
-//   datapoint = data.who;
-//   nameList.push(datapoint);
-//   return datapoint;
-// }
 
 function yLocation(data){
   let name = data.who;
