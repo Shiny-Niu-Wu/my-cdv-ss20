@@ -1,0 +1,19 @@
+### Thinking and Response to Prediction Tools
+
+* **Prompt 1: Think of contemporary systems/applications in which data is used to predict the future in order to then act upon it. Compile a list of 3 such situations**
+
+1. **Earthquake prediction systems in Taiwan**: Due to its geographical location, Taiwan has multiple earthquakes every year. It is common for us, but we take it seriously, including education in taking precautions and for sure, numerous prediction systems either official or non-official. It collects the data of how the earth plates move and others in order to predict the next earthquake (not restricted in Taiwan).
+2. **Period diary**: Many females download an app that can document and track their period cycles, for it not only reminds you the predicted time of having a period, it also calculates the variations of your cycles for you as a health tracker.
+3. **Google Ads**: This is to collect more detailed consumers behaviors in tracking their online viewing histories, and Google Ads is just one of the tools out there. With this kind of tools, you know better what your (potential) customers click on, how long do they stay on a particular section of a page, what they do after navigating to the homepage, out of these people how many actually put items into the shopping cart, and how many actually make a purchase, etc. In knowing as much of the journey, you tackle tasks and problems right at the spot, and therefore make better predictions.
+
+* **Prompt 2: Collect your thoughts on the Prediction and its role in the three above sources.**
+
+I chose three systems/applications in completely different usages and scales to show our increasingly intimate relationship with data prediction tools from a personal level to business field and to the entire world. Generally speaking, the point of prediction is to help us make the “best” decision in preventing the unwanted, and save time for us to “best” prepare beforehand. The earthquake prediction system serves this function the best, and it sincerely has no bias because it is risking “everyone’s” safety. As for a digital period diary, it is collecting every user data to better train their prediction model, but the application is personal, and so a smaller impact scale.
+
+I think it is always more complicated when business decisions are involved. We know that the larger the dataset, the more “accurate” it will be in predicting the possibility of a new datapoint falls into a specific, calculated range. But seeing those wonderful data processing tools out there, it could be easy for people to forget that the outcome is only a “possibility,” in a “relative range.” And for sure, it will not in any way easier for qualitative data. As almost every industry is transforming digitally, leaning towards single-person economy and subscription economy, a common trap would be becoming a firm believer that “the future is the extension of the past and the present.” This is only relatively but not absolutely true. Tracking points are everywhere, but without connecting the dots, it’s only going to be harder to predict human behaviors, owing that modern lives are more segmented and varied. In fact, magically, as they collect more data, we as consumers are also taking more self-automated actions. How do they take all the random acts into account?
+
+    Who are predicting who?
+
+It is self-conflicting, in that we hope those “magical formulas” be as quick and responsive to unexpected variations as possible, while we also hope them be protected and invariant for we rely on them heavily. Sometimes, and I hope I am not exaggerating, it is as if people are seen more as pure data points, rather than living human beings.
+
+Any number thrown in a formula can return a value. Therefore, it is important to know the meaning of the input number, the meaning of throwing that number into this formula, the meaning of formula, and finally, is the meaning of the result.
