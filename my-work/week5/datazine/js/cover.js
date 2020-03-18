@@ -87,6 +87,7 @@ function gotData(incomingData){
   let eyeGroup = viz
                   .append("g")
                     .attr("class", "eyeGroup")
+                    .attr("transform", positionGroup);
   ;
 
   eyeGroup.append("line")
@@ -153,13 +154,12 @@ function gotData(incomingData){
             .style("stroke", "white")
             .style("stroke-width", 2.5)
   ;
+}
 
-  function positionGroup(d, i){
-    let x = w / 2;
-    let y = h / 2;
-    return "translate("+ x +", "+ y +")"
-  }
-  eyeGroup.attr("transform", positionGroup);
+function positionGroup(d, i){
+  let x = w / 2;
+  let y = h / 2;
+  return "translate("+ x +", "+ y +")"
 }
 
 d3.json("data.json").then(gotData);

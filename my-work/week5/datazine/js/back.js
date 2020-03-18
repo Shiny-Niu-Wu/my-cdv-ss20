@@ -14,41 +14,252 @@ let viz = d3.select("#container")
 function gotData(incomingData){
   console.log("data loaded");
 
-  let eyeGroup = viz
-                  .append("g")
-                    .attr("class", "eyeGroup")
+  let eyeGroup = viz.append("g")
+                      .attr("class", "eyeGroup")
+                      .attr("transform", positionGroup);
+  ;
+
+  let lash1 = eyeGroup
+    .append("line")
+      .attr("x1", 0)
+      .attr("y1", 200)
+      .attr("x2", 0)
+      .attr("y2", -250)
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+      .style("stroke-dasharray", "10 0")
+      .style("stroke-dashoffset", 5)
+  ;
+
+  let lash2_1 = eyeGroup
+    .append("line")
+      .attr("x1", 100)
+      .attr("y1", 170)
+      .attr("x2", -100)
+      .attr("y2", -220)
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+      .style("stroke-dasharray", "30 30")
+      .style("stroke-dashoffset", 12)
+  ;
+
+  let lash2_2 = eyeGroup
+    .append("line")
+      .attr("x1", -100)
+      .attr("y1", 170)
+      .attr("x2", 100)
+      .attr("y2", -220)
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+      .style("stroke-dasharray", "30 30")
+      .style("stroke-dashoffset", 12)
+  ;
+
+  let lash3_1 = eyeGroup
+    .append("line")
+      .attr("x1", 190)
+      .attr("y1", 120)
+      .attr("x2", -190)
+      .attr("y2", -160)
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+      .style("stroke-dasharray", "10 10")
+      .style("stroke-dashoffset", 5)
+  ;
+
+  let lash3_2 = eyeGroup
+    .append("line")
+      .attr("x1", -190)
+      .attr("y1", 120)
+      .attr("x2", 190)
+      .attr("y2", -160)
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+      .style("stroke-dasharray", "10 10")
+      .style("stroke-dashoffset", 5)
+  ;
+
+  //NEXT:
+  //emotion placeholder for unique values(fix middlespread.js first)
+  let familyEmotions = ["emotion1", "emotion2", "emotion3", "emotion4", "emotion5", "emotion6", "emotion7", "emotion8", "emotion9", "emotion10"];
+
+  let emotionGroups = eyeGroup
+    .append("g")
+      .attr("class", "emotionGroups")
+  ;
+
+//family emotions
+  emotionGroups.append("clipPath")
+        .attr("id", "cut-family-emotion")
+        .append("rect")
+          .attr("x", 0)
+          .attr("y", - h/2)
+          .attr("width", w/2)
+          .attr("height", h/2)
+  ;
+
+  let familyGroups = emotionGroups.selectAll(".emotion").data(familyEmotions).enter();
+
+  familyGroups.append("path")
+                .attr("id", (d, i) => ("family" + i))
+                .attr("d", familyEmotionPos)
+                .attr("fill", "none")
+                .style("stroke", emotionColor)
+                .style("stroke-width", 2.5)
+                .attr("clip-path", "url(#cut-family-emotion)")
+  ;
+
+  familyGroups.append("text")
+                .append("textPath")
+                  .attr("xlink:href", (d, i) => ("#family" + i))
+                  .attr("startOffset", "80%")
+                  .text((d, i) => d)
+                  .attr("class", "description")
+                  .attr("x", w/2 - 100)
+                  .attr("y", (d, i) => ((-150) - (i+1)*20))
+  ;
+
+  let myEmotions = ["emotion1", "emotion2", "emotion3", "emotion4", "emotion5", "emotion6", "emotion7", "emotion8", "emotion9", "emotion10"];
+
+//my emotions
+  emotionGroups.append("clipPath")
+        .attr("id", "cut-my-emotion")
+        .append("rect")
+          .attr("x", - w/2)
+          .attr("y", 0)
+          .attr("width", w/2 - 150)
+          .attr("height", h/2)
+  ;
+
+  let myGroups = emotionGroups.selectAll(".emotion").data(myEmotions).enter();
+
+  myGroups.append("path")
+            .attr("id", (d, i) => ("my" + i))
+            .attr("d", myEmotionPos)
+            .attr("fill", "none")
+            .style("stroke", emotionColor)
+            .style("stroke-width", 2.5)
+            .attr("clip-path", "url(#cut-my-emotion)")
+  ;
+
+  myGroups.append("text")
+            .append("textPath")
+              .attr("xlink:href", (d, i) => ("#my" + i))
+              .attr("startOffset", "10%")
+              .text((d, i) => d)
+              .attr("class", "description")
+              .attr("x", 100)
+              .attr("y", (d, i) => (150 + (i+1)*20))
   ;
 
 //family emotion above the eye
   eyeGroup.append("path")
-            .attr("id", "straightLine")
+            .attr("id", "familyEyebrow")
             .attr("d", "M -600 -150 L 0 -300 L 600 -150")
             .attr("fill", "none")
-            .style("stroke", "white")
+            //this "green" is a placeholder
+            .style("stroke", "green")
             .style("stroke-width", 2.5)
   ;
 
-// //night time border around eyeball
-//   eyeGroup.append("path")
-//             .attr("id", "arc")
-//             .attr("d", "M -150 50 q 50 75 50 150")
-//             .attr("fill", "none")
-//             .style("stroke", "white")
-//             .style("stroke-width", 2.5)
-//   ;
+  eyeGroup.append("text")
+            .append("textPath")
+              .attr("xlink:href", "#familyEyebrow")
+              .attr("startOffset", "2%")
+              .text("mom dad bro sis popo")
+              .attr("class", "label")
+  ;
+
+//night time border around eyeball
+//using a rectangle to clip a circle
+  let night = eyeGroup.append("defs");
+
+  night.append("clipPath")
+        .attr("id", "cut-off-left")
+        .append("rect")
+          .attr("x", -150)
+          .attr("y", -150)
+          .attr("width", 150)
+          .attr("height", 300)
+  ;
+
+  let nightGradient = night
+    .append("linearGradient")
+      .attr("id", "nightGradient")
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", 0)
+      .attr("y2", 1)
+  ;
+
+  nightGradient.append("stop")
+                .style("stop-color", "#113285")
+                .attr("offset", "0%")
+  ;
+
+  nightGradient.append("stop")
+                .style("stop-color", "#08192D")
+                .attr("offset", "100%")
+  ;
+
+  eyeGroup.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 150)
+            .style("fill", "url(#nightGradient)")
+            .attr("clip-path", "url(#cut-off-left)")
+  ;
+
+//day time border around eyeball
+//using a rectangle to clip a circle
+  let day = eyeGroup.append("defs");
+
+  day.append("clipPath")
+      .attr("id", "cut-off-right")
+      .append("rect")
+        .attr("x", 0)
+        .attr("y", -150)
+        .attr("width", 150)
+        .attr("height", 300)
+  ;
+
+  let dayGradient = day
+    .append("linearGradient")
+      .attr("id", "dayGradient")
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", 0)
+      .attr("y2", 1)
+  ;
+
+  dayGradient.append("stop")
+                .style("stop-color", "#FFC408")
+                .attr("offset", "0%")
+  ;
+
+  dayGradient.append("stop")
+                .style("stop-color", "#F05E1C")
+                .attr("offset", "100%")
+  ;
+
+  eyeGroup.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 150)
+            .style("fill", "url(#dayGradient)")
+            .attr("clip-path", "url(#cut-off-right)")
+  ;
 
 //eyeball
   eyeGroup.append("circle")
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", 100)
-            .style("stroke", "white")
-            .style("stroke-width", 2.5)
   ;
 
 //my emotion under the eye
   eyeGroup.append("path")
-            .attr("id", "arc")
+            .attr("id", "myEyebrow")
             .attr("d", "M -600 150 q 600 200 1200 0")
             .attr("fill", "none")
             .style("stroke", "white")
@@ -56,20 +267,256 @@ function gotData(incomingData){
   ;
 
   eyeGroup.append("text")
+            .append("textPath")
+              .attr("xlink:href", "#myEyebrow")
+              .attr("startOffset", "10%")
+              .text("no emotion")
+              .attr("class", "description")
+  ;
+
+
+  eyeGroup.append("text")
+            .append("textPath")
+              .attr("xlink:href", "#myEyebrow")
+              .attr("startOffset", "80%")
+              .text("shiny shuan-yi wu")
+              .attr("class", "label")
+  ;
+
+  eyeGroup.append("text")
             .text(incomingData.length)
             .attr("fill", "white")
-            .attr("x", -80)
+            .attr("x", -90)
             .attr("y", 350)
             .style("font-size", 100)
             .style("font-family", "Helvetica")
+            .style("font-weight", "lighter")
   ;
 
-  function positionGroup(d, i){
-    let x = w / 2;
-    let y = h / 2;
-    return "translate("+ x +", "+ y +")"
-  }
-  eyeGroup.attr("transform", positionGroup);
+  let personGroup = viz.append("g")
+                      .attr("class", "personGroup")
+                      .attr("transform", positionGroup);
+  ;
+
+  //mom
+  personGroup.append("defs")
+              .append("clipPath")
+                .attr("id", "cut-off-mom")
+                .append("rect")
+                  .attr("x", -100)
+                  .attr("y", -100)
+                  .attr("width", 40)
+                  .attr("height", 200)
+  ;
+  personGroup.append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", 100)
+              .style("fill", "#d62d20")
+              .attr("clip-path", "url(#cut-off-mom)")
+  ;
+
+  personGroup.append("text")
+              .text("<mom>")
+              .attr("class", "description")
+              .attr("x", -30)
+              .attr("y", -75)
+              .attr("transform", "rotate(-90)")
+  ;
+
+  //popo
+  personGroup.append("defs")
+              .append("clipPath")
+                .attr("id", "cut-off-popo")
+                .append("rect")
+                  .attr("x", -60)
+                  .attr("y", -100)
+                  .attr("width", 40)
+                  .attr("height", 200)
+  ;
+  personGroup.append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", 100)
+              .style("fill", "#ffa700")
+              .attr("clip-path", "url(#cut-off-popo)")
+  ;
+
+  personGroup.append("text")
+              .text("<popo>")
+              .attr("class", "description")
+              .attr("x", -32)
+              .attr("y", -37)
+              .attr("transform", "rotate(-90)")
+  ;
+
+  //brother
+  personGroup.append("defs")
+              .append("clipPath")
+                .attr("id", "cut-off-bro")
+                .append("rect")
+                  .attr("x", -20)
+                  .attr("y", -100)
+                  .attr("width", 40)
+                  .attr("height", 200)
+  ;
+  personGroup.append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", 100)
+              .style("fill", "#008744")
+              .attr("clip-path", "url(#cut-off-bro)")
+  ;
+
+  personGroup.append("text")
+              .text("<brother>")
+              .attr("class", "description")
+              .attr("x", -38)
+              .attr("y", 3)
+              .attr("transform", "rotate(-90)")
+  ;
+
+  //dad
+  personGroup.append("defs")
+              .append("clipPath")
+                .attr("id", "cut-off-dad")
+                .append("rect")
+                  .attr("x", 20)
+                  .attr("y", -100)
+                  .attr("width", 40)
+                  .attr("height", 200)
+  ;
+  personGroup.append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", 100)
+              .style("fill", "#0057e7")
+              .attr("clip-path", "url(#cut-off-dad)")
+  ;
+
+  personGroup.append("text")
+              .text("<dad>")
+              .attr("class", "description")
+              .attr("x", -28)
+              .attr("y", 44)
+              .attr("transform", "rotate(-90)")
+  ;
+
+  //sister
+  personGroup.append("defs")
+              .append("clipPath")
+                .attr("id", "cut-off-sis")
+                .append("rect")
+                  .attr("x", 60)
+                  .attr("y", -100)
+                  .attr("width", 40)
+                  .attr("height", 200)
+  ;
+  personGroup.append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", 100)
+              .style("fill", "#dee1e6")
+              .attr("clip-path", "url(#cut-off-sis)")
+  ;
+
+  personGroup.append("text")
+              .text("<sister>")
+              .attr("class", "description")
+              .attr("x", -31)
+              .attr("y", 84)
+              .attr("transform", "rotate(-90)")
+  ;
 }
+
+function positionGroup(d, i){
+  let x = w / 2;
+  let y = h / 2;
+  return "translate("+ x +", "+ y +")"
+}
+
+function familyEmotionPos(d, i){
+  let sideY = (-150) - (i+1)*20;
+  let middleY = (-300) - (i+1)*10;
+  return "M -600 " + sideY + " L 0 " + middleY + " L 600 " + sideY
+}
+
+function myEmotionPos(d, i){
+  let sideY = 150 + (i+1)*20;
+  let middleY = 300 + (i+1)*10;
+  return "M -600 " + sideY + " L 0 " + middleY + " L 600 " + sideY
+}
+
+function emotionColor(d, i){
+  return "#" + Math.floor(Math.random()*16777215).toString(16);
+}
+
+let descriptions = viz
+  .append("g")
+    .attr("class", "descriptions")
+;
+
+descriptions.append("text")
+    .text("<length of conversation by words>")
+    .attr("class", "description")
+    .attr("x", 485)
+    .attr("y", h - 20)
+;
+
+descriptions.append("text")
+    .text("<night>")
+    .attr("class", "description")
+    .attr("x", w/2 - 70)
+    .attr("y", 580)
+;
+
+descriptions.append("text")
+    .text("<day>")
+    .attr("class", "description")
+    .attr("x", w/2 + 10)
+    .attr("y", 580)
+;
+
+descriptions.append("text")
+    .text("<eye contact>")
+    .attr("class", "description")
+    .attr("x", w/2 - 50)
+    .attr("y", 140)
+;
+
+descriptions.append("text")
+    .text(">3s")
+    .attr("class", "description")
+    .attr("x", w/2 + 10)
+    .attr("y", 170)
+;
+
+descriptions.append("text")
+    .text("1-3s")
+    .attr("class", "description")
+    .attr("x", w/2 + 100)
+    .attr("y", 210)
+;
+
+descriptions.append("text")
+    .text("<1s")
+    .attr("class", "description")
+    .attr("x", w/2 + 180)
+    .attr("y", 270)
+;
+
+descriptions.append("text")
+    .text("<emotion>")
+    .attr("class", "description")
+    .attr("x", w - 100)
+    .attr("y", 600)
+;
+
+descriptions.append("text")
+    .text("<emotion>")
+    .attr("class", "description")
+    .attr("x", 20)
+    .attr("y", 200)
+;
 
 d3.json("data.json").then(gotData);

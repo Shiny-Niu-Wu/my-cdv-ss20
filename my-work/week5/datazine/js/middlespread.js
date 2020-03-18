@@ -11,25 +11,36 @@ let viz = d3.select("#container")
     .style("background-color", "black")
 ;
 
+viz.append("text")
+    .text("<20200206-0303>")
+      .attr("x", w - 190)
+      .attr("y", h - 20)
+      .style("fill", "white")
+      .style("font-size", 20)
+      .style("font-family", "Helvetica")
+;
+
+//NEXT:
+//get unique values of emotions and for each assign a color
+//these unique values will also go into back.js
+  //first I am getting the unique values
+
+  //second I am scaling the range of the values to a range of colors
+    //  ordinalScale inout domain is an array of all possible emotions ["Noidea.", "meh.", "wqdnoqw"];
+    // ouput range of that scale would be https://github.com/d3/d3-scale-chromatic
+    // let colorScale = d3.scaleOrdinal(  d3.schemeCategory10   ).domain( ["Noidea.", "meh.", "wqdnoqw"] );
+    // console.log(  colorScale("Noidea.")  );
+
 function gotData(incomingData){
   console.log("data loaded");
 
   let eyeGroups = viz.selectAll(".eyeGroup").data(incomingData).enter()
     .append("g")
       .attr("class", "eyeGroup")
+      .attr("transform", positionGroup)
   ;
 
-  let lashGroups = eyeGroups
-    .append("g")
-      .attr("class", "lashGroup")
-  ;
-
-//NEXT:
-//see if there is a better way to draw X lashes
-  //if eye contact <1s, only dash 1
-  //if eye contact 1-3s, add dash 2_1 & 2_2
-  //if eye contact >3s, add dash 3_1 & 3_2
-  let lash1 = lashGroups
+  let lash1 = eyeGroups
     .append("line")
       .attr("x1", 0)
       .attr("y1", 40)
@@ -37,14 +48,11 @@ function gotData(incomingData){
       .attr("y2", -40)
       .style("stroke", "white")
       .style("stroke-width", 2.5)
+      .style("stroke-dasharray", eyeContactTime)
+      .style("stroke-dashoffset", 3)
   ;
 
-  let lashGroup2 = lashGroups
-    .append("g")
-      .attr("class", "lashGroup2")
-  ;
-
-  let lash2_1 = lashGroup2
+  let lash2_1 = eyeGroups
     .append("line")
       .attr("x1", 13)
       .attr("y1", 37)
@@ -52,9 +60,11 @@ function gotData(incomingData){
       .attr("y2", -37)
       .style("stroke", "white")
       .style("stroke-width", 2.5)
+      .style("stroke-dasharray", eyeContactTime)
+      .style("stroke-dashoffset", 3)
   ;
 
-  let lash2_2 = lashGroup2
+  let lash2_2 = eyeGroups
     .append("line")
       .attr("x1", -13)
       .attr("y1", 37)
@@ -62,14 +72,11 @@ function gotData(incomingData){
       .attr("y2", -37)
       .style("stroke", "white")
       .style("stroke-width", 2.5)
+      .style("stroke-dasharray", eyeContactTime)
+      .style("stroke-dashoffset", 3)
   ;
 
-  let lashGroup3 = lashGroups
-    .append("g")
-      .attr("class", "lashGroup3")
-  ;
-
-  let lash3_1 = lashGroup3
+  let lash3_1 = eyeGroups
     .append("line")
       .attr("x1", 25)
       .attr("y1", 30)
@@ -77,9 +84,11 @@ function gotData(incomingData){
       .attr("y2", -30)
       .style("stroke", "white")
       .style("stroke-width", 2.5)
+      .style("stroke-dasharray", eyeContactTime)
+      .style("stroke-dashoffset", 3)
   ;
 
-  let lash3_2 = lashGroup3
+  let lash3_2 = eyeGroups
     .append("line")
       .attr("x1", -25)
       .attr("y1", 30)
@@ -87,11 +96,13 @@ function gotData(incomingData){
       .attr("y2", -30)
       .style("stroke", "white")
       .style("stroke-width", 2.5)
+      .style("stroke-dasharray", eyeContactTime)
+      .style("stroke-dashoffset", 3)
   ;
 
   let eyes = eyeGroups
     .append("circle")
-      .attr("id", getID)
+      .attr("id", (d, i) => d.no)
       .attr("cx", 0)
       .attr("cy", 0)
       .attr("r", 20)
@@ -126,36 +137,42 @@ function gotData(incomingData){
       .style("stroke", getMyEmotionColor)
       .style("stroke-width", 2.5)
   ;
-
-  //24 circles each line
-  //5 lines in total
-  //remember: i starts from zero, but d.no starts from 1
-  function positionGroup(d, i){
-    let x;
-    let y;
-    if ((i+1) <= 24) {
-      x = i * 100 + 50;
-      y = h * 0.08;
-    } else if ((i+1) <= (24*2)) {
-      x = (i - 24*1) * 100 + 50;
-      y = h * 0.28;
-    } else if ((i+1) <= (24*3)) {
-      x = (i - 24*2) * 100 + 50;
-      y = h * 0.48;
-    } else if ((i+1) <= (24*4)) {
-      x = (i - 24*3) * 100 + 50;
-      y = h * 0.68;
-    } else {
-      x = (i - 24*4) * 100 + 50;
-      y = h * 0.88;
-    }
-    return "translate("+ x +", "+ y +")"
-  }
-  eyeGroups.attr("transform", positionGroup);
 }
 
-function getID(d, i){
-  return d.no
+//24 circles each line
+//5 lines in total
+//remember: i starts from zero, but d.no starts from 1
+function positionGroup(d, i){
+  let x;
+  let y;
+  if ((i+1) <= 24) {
+    x = i * 100 + 50;
+    y = h * 0.08;
+  } else if ((i+1) <= (24*2)) {
+    x = (i - 24*1) * 100 + 50;
+    y = h * 0.28;
+  } else if ((i+1) <= (24*3)) {
+    x = (i - 24*2) * 100 + 50;
+    y = h * 0.48;
+  } else if ((i+1) <= (24*4)) {
+    x = (i - 24*3) * 100 + 50;
+    y = h * 0.68;
+  } else {
+    x = (i - 24*4) * 100 + 50;
+    y = h * 0.88;
+  }
+  return "translate("+ x +", "+ y +")"
+}
+
+function eyeContactTime(d, i){
+  let duration = d.howlongeyecontact;
+  if (duration === "Less than 1 second") {
+    return "2 5"
+  } else if (duration === "1-3 seconds") {
+    return "6 5"
+  } else if (duration === "More than 3 seconds") {
+    return "5 0"
+  }
 }
 
 //CONSIDER:
@@ -170,44 +187,38 @@ function getDayTime(d, i){
 
   // let time = data.whentime.split(":");
   // console.log(time[0]); the number of hour
-  let color;
   let where = d.where;
   if (where === "Virtual Call") {
-    color = "green"
+    return "green"
   } else {
     if (hour >= 6 && hour <= 11) {
-      color = "#FFC408"
+      return "#FFC408"
     } else if (hour >= 12 && hour <= 17) {
-      color = "#F05E1C"
+      return "#F05E1C"
     } else if (hour >= 18 && hour <= 24) {
-      color = "#113285"
+      return "#113285"
     } else {
-      color = "#211E55"
+      return "#08192D"
     }
   }
-
-  return color;
 }
 
 function getPerson(d, i){
-  let color;
   if (d.who === "mom") {
-    color = "#d62d20"
+    return "#d62d20"
   } else if (d.who === "dad") {
-    color = "#0057e7"
+    return "#0057e7"
   } else if (d.who === "brother") {
-    color = "#008744"
+    return "#008744"
   } else if (d.who === "sister") {
-    color = "white"
+    return "#dee1e6"
   } else if (d.who === "popo") {
-    color = "#ffa700"
+    return "#ffa700"
   }
-  return color;
 }
 
 function getConvoLength(d, i){
   //code following https://stackoverflow.com/questions/20396456/how-to-do-word-counts-for-a-mixture-of-english-and-chinese-in-javascript
-  let length;
   let conversation = d.whattalk;
 
   let where = d.where;
@@ -233,11 +244,10 @@ function getConvoLength(d, i){
   //return the total of the mixture
   //virtual call is actually longer than just "(Everything)"
   if (where === "Virtual Call") {
-    length = (count1 + count2) * 1000;
+    return (count1 + count2) * 1000
   } else {
-    length = (count1 + count2);
+    return (count1 + count2)
   }
-  return length;
 }
 
 //NEXT:
@@ -245,13 +255,11 @@ function getConvoLength(d, i){
 //"No idea." or "Nothing particular.": arc, others straightLine
 function getFamilyEmotionPath(d, i){
   let emotion = d.whatemotion;
-  let path;
   if (emotion === "No idea.") {
-    path = "M -25 -40 q 25 -20 50 0"
+    return "M -25 -40 q 25 -20 50 0"
   } else {
-    path = "M -25 -35 L 0 -55 L 25 -35"
+    return "M -25 -35 L 0 -55 L 25 -35"
   }
-  return path
 }
 
 //NEXT:
@@ -259,36 +267,30 @@ function getFamilyEmotionPath(d, i){
 function getFamilyEmotionColor(d, i){
   let emotion = d.whatemotion;
   let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  let color;
   if (emotion === "No idea.") {
-    color = "white"
+    return "white"
   } else {
-    color = "#" + randomColor
+    return "#" + randomColor
   }
-  return color
 }
 
 function getMyEmotionPath(d, i){
   let emotion = d.myemotion;
-  let path;
   if (emotion === "Nothing particular.") {
-    path = "M -25 40 q 25 20 50 0"
+    return "M -25 40 q 25 20 50 0"
   } else {
-    path = "M -25 35 L 0 55 L 25 35"
+    return "M -25 35 L 0 55 L 25 35"
   }
-  return path
 }
 
 function getMyEmotionColor(d, i){
   let emotion = d.myemotion;
   let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  let color;
   if (emotion === "Nothing particular.") {
-    color = "white"
+    return "white"
   } else {
-    color = "#" + randomColor
+    return "#" + randomColor
   }
-  return color
 }
 
 d3.json("data.json").then(gotData);
