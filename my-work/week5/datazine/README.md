@@ -2,3 +2,5 @@
 * Things on the way:
 1. getting unique values of the emotions for both my family and myself, and for each apply unique colors
 2. these unique values will also appear on the back page of the zine
+3. fixing the text position of getConvoLength (the numbers under the eyeballs)
+4. in general, prevent applying colors that are too dark so everything shows on the pages
