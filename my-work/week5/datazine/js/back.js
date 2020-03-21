@@ -459,29 +459,33 @@ let descriptions = viz
 descriptions.append("text")
     .text("<length of conversation by words>")
     .attr("class", "description")
-    .attr("x", 485)
+    .attr("x", w / 2)
     .attr("y", h - 20)
+    .attr("text-anchor", "middle")
 ;
 
 descriptions.append("text")
     .text("<night>")
     .attr("class", "description")
-    .attr("x", w/2 - 70)
+    .attr("x", w/2 - 40)
     .attr("y", 580)
+    .attr("text-anchor", "middle")
 ;
 
 descriptions.append("text")
     .text("<day>")
     .attr("class", "description")
-    .attr("x", w/2 + 10)
+    .attr("x", w/2 + 35)
     .attr("y", 580)
+    .attr("text-anchor", "middle")
 ;
 
 descriptions.append("text")
     .text("<eye contact>")
     .attr("class", "description")
-    .attr("x", w/2 - 50)
+    .attr("x", w / 2)
     .attr("y", 140)
+    .attr("text-anchor", "middle")
 ;
 
 descriptions.append("text")

@@ -114,9 +114,9 @@ function gotData(incomingData){
   let conversations = eyeGroups
     .append("text")
       .text(getConvoLength)
-      //.attr("x", fixedTextXPos)
-      .attr("x", -10)
+      .attr("x", 0)
       .attr("y", 80)
+      .attr("text-anchor", "middle")
       .style("fill", "white")
       .style("font-size", 20)
       .style("font-family", "Helvetica")
@@ -175,18 +175,12 @@ function eyeContactTime(d, i){
   }
 }
 
-//CONSIDER:
-//when applying colors, scale and map the time range
 //virtual call eye in green; otherwise, eye contact in daytime or nighttime affects the color of eyes
 function getDayTime(d, i){
   //tidy up the original time code from JSON to regular, readable time
   let time = d.whentime;
   let timeObject = new Date(time);
   let hour = timeObject.getHours();
-  //console.log(hour);
-
-  // let time = data.whentime.split(":");
-  // console.log(time[0]); the number of hour
   let where = d.where;
   if (where === "Virtual Call") {
     return "green"

@@ -128,8 +128,9 @@ function gotData(incomingData){
   eyeGroup.append("text")
             .text(incomingData.length)
             .attr("fill", "white")
-            .attr("x", -17)
+            .attr("x", 0)
             .attr("y", 70)
+            .attr("text-anchor", "middle")
             .style("font-size", 20)
             .style("font-family", "Helvetica")
   ;
