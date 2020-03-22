@@ -14,6 +14,11 @@ let viz = d3.select("#container")
 function gotData(incomingData){
   console.log("data loaded");
 
+  let familyEmotionsData = [...new Set(incomingData.map(d => d.whatemotion))];
+  let familyEmotionsColorScale = d3.scaleOrdinal(  d3.schemePaired  ).domain( familyEmotionsData );
+  let myEmotionsData = [...new Set(incomingData.map(d => d.myemotion))];
+  let myEmotionsColorScale = d3.scaleOrdinal(  d3.schemePaired  ).domain( myEmotionsData );
+
   let eyeGroup = viz.append("g")
                       .attr("class", "eyeGroup")
                       .attr("transform", positionGroup);
@@ -79,17 +84,14 @@ function gotData(incomingData){
       .style("stroke-dashoffset", 5)
   ;
 
-  //NEXT:
-  //emotion placeholder for unique values(fix middlespread.js first)
-  let familyEmotions = ["emotion1", "emotion2", "emotion3", "emotion4", "emotion5", "emotion6", "emotion7", "emotion8", "emotion9", "emotion10"];
-
-  let emotionGroups = eyeGroup
+//family emotions
+  let familyEmotionGroups = viz
     .append("g")
-      .attr("class", "emotionGroups")
+      .attr("class", "familyEmotionGroups")
+      .attr("transform", positionGroup);
   ;
 
-//family emotions
-  emotionGroups.append("clipPath")
+  familyEmotionGroups.append("clipPath")
         .attr("id", "cut-family-emotion")
         .append("rect")
           .attr("x", 0)
@@ -98,13 +100,13 @@ function gotData(incomingData){
           .attr("height", h/2)
   ;
 
-  let familyGroups = emotionGroups.selectAll(".emotion").data(familyEmotions).enter();
+  let familyGroups = familyEmotionGroups.selectAll(".emotion").data(familyEmotionsData).enter();
 
   familyGroups.append("path")
                 .attr("id", (d, i) => ("family" + i))
                 .attr("d", familyEmotionPos)
                 .attr("fill", "none")
-                .style("stroke", emotionColor)
+                .style("stroke", (d, i) => familyEmotionsColorScale(familyEmotionsData[i]))
                 .style("stroke-width", 2.5)
                 .attr("clip-path", "url(#cut-family-emotion)")
   ;
@@ -112,17 +114,22 @@ function gotData(incomingData){
   familyGroups.append("text")
                 .append("textPath")
                   .attr("xlink:href", (d, i) => ("#family" + i))
-                  .attr("startOffset", "80%")
+                  .attr("startOffset", "97%")
                   .text((d, i) => d)
+                  .attr("text-anchor", "end")
                   .attr("class", "description")
                   .attr("x", w/2 - 100)
                   .attr("y", (d, i) => ((-150) - (i+1)*20))
   ;
 
-  let myEmotions = ["emotion1", "emotion2", "emotion3", "emotion4", "emotion5", "emotion6", "emotion7", "emotion8", "emotion9", "emotion10"];
-
 //my emotions
-  emotionGroups.append("clipPath")
+  let myEmotionGroups = viz
+    .append("g")
+      .attr("class", "myEmotionGroups")
+      .attr("transform", positionGroup);
+  ;
+
+  myEmotionGroups.append("clipPath")
         .attr("id", "cut-my-emotion")
         .append("rect")
           .attr("x", - w/2)
@@ -131,13 +138,13 @@ function gotData(incomingData){
           .attr("height", h/2)
   ;
 
-  let myGroups = emotionGroups.selectAll(".emotion").data(myEmotions).enter();
+  let myGroups = myEmotionGroups.selectAll(".emotion").data(myEmotionsData).enter();
 
   myGroups.append("path")
             .attr("id", (d, i) => ("my" + i))
             .attr("d", myEmotionPos)
             .attr("fill", "none")
-            .style("stroke", emotionColor)
+            .style("stroke", (d, i) => myEmotionsColorScale(myEmotionsData[i]))
             .style("stroke-width", 2.5)
             .attr("clip-path", "url(#cut-my-emotion)")
   ;
@@ -145,7 +152,7 @@ function gotData(incomingData){
   myGroups.append("text")
             .append("textPath")
               .attr("xlink:href", (d, i) => ("#my" + i))
-              .attr("startOffset", "10%")
+              .attr("startOffset", "3%")
               .text((d, i) => d)
               .attr("class", "description")
               .attr("x", 100)
@@ -165,7 +172,7 @@ function gotData(incomingData){
   eyeGroup.append("text")
             .append("textPath")
               .attr("xlink:href", "#familyEyebrow")
-              .attr("startOffset", "2%")
+              .attr("startOffset", "3%")
               .text("mom dad bro sis popo")
               .attr("class", "label")
   ;
@@ -269,7 +276,7 @@ function gotData(incomingData){
   eyeGroup.append("text")
             .append("textPath")
               .attr("xlink:href", "#myEyebrow")
-              .attr("startOffset", "10%")
+              .attr("startOffset", "3%")
               .text("no emotion")
               .attr("class", "description")
   ;
@@ -278,8 +285,9 @@ function gotData(incomingData){
   eyeGroup.append("text")
             .append("textPath")
               .attr("xlink:href", "#myEyebrow")
-              .attr("startOffset", "80%")
+              .attr("startOffset", "97%")
               .text("shiny shuan-yi wu")
+              .attr("text-anchor", "end")
               .attr("class", "label")
   ;
 
@@ -436,27 +444,23 @@ function positionGroup(d, i){
 }
 
 function familyEmotionPos(d, i){
-  let sideY = (-150) - (i+1)*20;
-  let middleY = (-300) - (i+1)*10;
+  let sideY = (-150) - (i+1)*16.5;
+  let middleY = (-300) - (i+1)*8;
   return "M -600 " + sideY + " L 0 " + middleY + " L 600 " + sideY
 }
 
 function myEmotionPos(d, i){
-  let sideY = 150 + (i+1)*20;
-  let middleY = 300 + (i+1)*10;
+  let sideY = 155 + (i+1)*18;
+  let middleY = 300 + (i+1)*8;
   return "M -600 " + sideY + " L 0 " + middleY + " L 600 " + sideY
 }
 
-function emotionColor(d, i){
-  return "#" + Math.floor(Math.random()*16777215).toString(16);
-}
-
-let descriptions = viz
+let descriptionGroup = viz
   .append("g")
-    .attr("class", "descriptions")
+    .attr("class", "descriptionGroup")
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<length of conversation by words>")
     .attr("class", "description")
     .attr("x", w / 2)
@@ -464,7 +468,7 @@ descriptions.append("text")
     .attr("text-anchor", "middle")
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<night>")
     .attr("class", "description")
     .attr("x", w/2 - 40)
@@ -472,7 +476,7 @@ descriptions.append("text")
     .attr("text-anchor", "middle")
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<day>")
     .attr("class", "description")
     .attr("x", w/2 + 35)
@@ -480,7 +484,7 @@ descriptions.append("text")
     .attr("text-anchor", "middle")
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<eye contact>")
     .attr("class", "description")
     .attr("x", w / 2)
@@ -488,39 +492,39 @@ descriptions.append("text")
     .attr("text-anchor", "middle")
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text(">3s")
     .attr("class", "description")
     .attr("x", w/2 + 10)
     .attr("y", 170)
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("1-3s")
     .attr("class", "description")
     .attr("x", w/2 + 100)
     .attr("y", 210)
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<1s")
     .attr("class", "description")
     .attr("x", w/2 + 180)
     .attr("y", 270)
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<emotion>")
     .attr("class", "description")
-    .attr("x", w - 100)
-    .attr("y", 600)
+    .attr("x", w - 110)
+    .attr("y", 620)
 ;
 
-descriptions.append("text")
+descriptionGroup.append("text")
     .text("<emotion>")
     .attr("class", "description")
-    .attr("x", 20)
-    .attr("y", 200)
+    .attr("x", 30)
+    .attr("y", 180)
 ;
 
 d3.json("data.json").then(gotData);

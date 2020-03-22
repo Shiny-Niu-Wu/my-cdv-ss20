@@ -20,19 +20,25 @@ viz.append("text")
       .style("font-family", "Helvetica")
 ;
 
-//NEXT:
+function gotData(incomingData){
+  console.log("data loaded");
+
 //get unique values of emotions and for each assign a color
 //these unique values will also go into back.js
   //first I am getting the unique values
+  let familyEmotionsData = [...new Set(incomingData.map(d => d.whatemotion))];
+  console.log(familyEmotionsData);
 
   //second I am scaling the range of the values to a range of colors
-    //  ordinalScale inout domain is an array of all possible emotions ["Noidea.", "meh.", "wqdnoqw"];
-    // ouput range of that scale would be https://github.com/d3/d3-scale-chromatic
-    // let colorScale = d3.scaleOrdinal(  d3.schemeCategory10   ).domain( ["Noidea.", "meh.", "wqdnoqw"] );
-    // console.log(  colorScale("Noidea.")  );
+  //ordinalScale inout domain is an array of all possible emotions ["Noidea.", "meh.", "wqdnoqw"];
+  let familyEmotionsColorScale = d3.scaleOrdinal(  d3.schemePaired  ).domain( familyEmotionsData );
+  //console.log(familyEmotionsColorScale(familyEmotionsData[0]));
 
-function gotData(incomingData){
-  console.log("data loaded");
+  let myEmotionsData = [...new Set(incomingData.map(d => d.myemotion))];
+  console.log(myEmotionsData);
+
+  let myEmotionsColorScale = d3.scaleOrdinal(  d3.schemePaired  ).domain( myEmotionsData );
+  //console.log(familyEmotionsColorScale(myEmotionsData[0]));
 
   let eyeGroups = viz.selectAll(".eyeGroup").data(incomingData).enter()
     .append("g")
@@ -122,6 +128,52 @@ function gotData(incomingData){
       .style("font-family", "Helvetica")
   ;
 
+  //familyEmotionsData[0] = "No idea."
+  //familyEmotionsData[9] = "Can't recall."
+  function getFamilyEmotionPath(d, i){
+    let emotion = d.whatemotion;
+    if (emotion === familyEmotionsData[0] || emotion === familyEmotionsData[9]) {
+      return "M -25 -40 q 25 -20 50 0"
+    } else {
+      return "M -25 -35 L 0 -55 L 25 -35"
+    }
+  }
+
+  //NEXT:
+  //there must be a more elegant way to match the values and assign colors...
+  function getFamilyEmotionColor(d, i){
+    let emotion = d.whatemotion;
+    //let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    //no color for [0] & [9]
+    if (emotion === familyEmotionsData[0] || emotion === familyEmotionsData[9]) {
+      return "white"
+    } else if (emotion === familyEmotionsData[1]) {
+      return familyEmotionsColorScale(familyEmotionsData[1])
+    } else if (emotion === familyEmotionsData[2]) {
+      return familyEmotionsColorScale(familyEmotionsData[2])
+    } else if (emotion === familyEmotionsData[3]) {
+      return familyEmotionsColorScale(familyEmotionsData[3])
+    } else if (emotion === familyEmotionsData[4]) {
+      return familyEmotionsColorScale(familyEmotionsData[4])
+    } else if (emotion === familyEmotionsData[5]) {
+      return familyEmotionsColorScale(familyEmotionsData[5])
+    } else if (emotion === familyEmotionsData[6]) {
+      return familyEmotionsColorScale(familyEmotionsData[6])
+    } else if (emotion === familyEmotionsData[7]) {
+      return familyEmotionsColorScale(familyEmotionsData[7])
+    } else if (emotion === familyEmotionsData[8]) {
+      return familyEmotionsColorScale(familyEmotionsData[8])
+    } else if (emotion === familyEmotionsData[10]) {
+      return familyEmotionsColorScale(familyEmotionsData[10])
+    } else if (emotion === familyEmotionsData[11]) {
+      return familyEmotionsColorScale(familyEmotionsData[11])
+    } else if (emotion === familyEmotionsData[12]) {
+      return familyEmotionsColorScale(familyEmotionsData[12])
+    } else {
+      return familyEmotionsColorScale(familyEmotionsData[13])
+    }
+  }
+
   let familyEmotions = eyeGroups
     .append("path")
       .attr("d", getFamilyEmotionPath)
@@ -129,6 +181,48 @@ function gotData(incomingData){
       .style("stroke", getFamilyEmotionColor)
       .style("stroke-width", 2.5)
   ;
+
+  //myEmotionsData[0] = "Nothing particular."
+  function getMyEmotionPath(d, i){
+    let emotion = d.myemotion;
+    if (emotion === myEmotionsData[0]) {
+      return "M -25 40 q 25 20 50 0"
+    } else {
+      return "M -25 35 L 0 55 L 25 35"
+    }
+  }
+
+  function getMyEmotionColor(d, i){
+    let emotion = d.myemotion;
+    //let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    if (emotion === myEmotionsData[0]) {
+      return "white"
+    } else if (emotion === myEmotionsData[1]) {
+      return myEmotionsColorScale(myEmotionsData[1])
+    } else if (emotion === myEmotionsData[2]) {
+      return myEmotionsColorScale(myEmotionsData[2])
+    } else if (emotion === myEmotionsData[3]) {
+      return myEmotionsColorScale(myEmotionsData[3])
+    } else if (emotion === myEmotionsData[4]) {
+      return myEmotionsColorScale(myEmotionsData[4])
+    } else if (emotion === myEmotionsData[5]) {
+      return myEmotionsColorScale(myEmotionsData[5])
+    } else if (emotion === myEmotionsData[6]) {
+      return myEmotionsColorScale(myEmotionsData[6])
+    } else if (emotion === myEmotionsData[7]) {
+      return myEmotionsColorScale(myEmotionsData[7])
+    } else if (emotion === myEmotionsData[8]) {
+      return myEmotionsColorScale(myEmotionsData[8])
+    } else if (emotion === myEmotionsData[9]) {
+      return myEmotionsColorScale(myEmotionsData[9])
+    } else if (emotion === myEmotionsData[10]) {
+      return myEmotionsColorScale(myEmotionsData[10])
+    } else if (emotion === myEmotionsData[11]) {
+      return myEmotionsColorScale(myEmotionsData[11])
+    } else {
+      return myEmotionsColorScale(myEmotionsData[12])
+    }
+  }
 
   let myEmotions = eyeGroups
     .append("path")
@@ -241,49 +335,6 @@ function getConvoLength(d, i){
     return (count1 + count2) * 1000
   } else {
     return (count1 + count2)
-  }
-}
-
-//NEXT:
-//add colors to the different emotions
-//"No idea." or "Nothing particular.": arc, others straightLine
-function getFamilyEmotionPath(d, i){
-  let emotion = d.whatemotion;
-  if (emotion === "No idea.") {
-    return "M -25 -40 q 25 -20 50 0"
-  } else {
-    return "M -25 -35 L 0 -55 L 25 -35"
-  }
-}
-
-//NEXT:
-//I need it to be one emotion, one random color
-function getFamilyEmotionColor(d, i){
-  let emotion = d.whatemotion;
-  let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  if (emotion === "No idea.") {
-    return "white"
-  } else {
-    return "#" + randomColor
-  }
-}
-
-function getMyEmotionPath(d, i){
-  let emotion = d.myemotion;
-  if (emotion === "Nothing particular.") {
-    return "M -25 40 q 25 20 50 0"
-  } else {
-    return "M -25 35 L 0 55 L 25 35"
-  }
-}
-
-function getMyEmotionColor(d, i){
-  let emotion = d.myemotion;
-  let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  if (emotion === "Nothing particular.") {
-    return "white"
-  } else {
-    return "#" + randomColor
   }
 }
 

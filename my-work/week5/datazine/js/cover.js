@@ -10,7 +10,9 @@ let viz = d3.select("#container")
     .style("background-color", "black")
 ;
 
-viz.append("text")
+let decorationGroup = viz.append("g").attr("class", "decorationGroup");
+
+decorationGroup.append("text")
     .text("eye")
     .attr("fill", "white")
     .attr("x", w * 0.95)
@@ -19,7 +21,7 @@ viz.append("text")
     .style("font-family", "Helvetica")
 ;
 
-viz.append("text")
+decorationGroup.append("text")
     .text("眼")
     .attr("fill", "white")
     .attr("x", w * 0.02)
@@ -28,7 +30,7 @@ viz.append("text")
     .style("font-family", "Helvetica")
 ;
 
-viz.append("text")
+decorationGroup.append("text")
     .text("contact")
     .attr("fill", "white")
     .attr("x", w * 0.2)
@@ -37,7 +39,7 @@ viz.append("text")
     .style("font-family", "Helvetica")
 ;
 
-viz.append("text")
+decorationGroup.append("text")
     .text("連結")
     .attr("fill", "white")
     .attr("x", w * 0.6)
@@ -46,35 +48,35 @@ viz.append("text")
     .style("font-family", "Helvetica")
 ;
 
-viz.append("path")
+decorationGroup.append("path")
     .attr("d", "M 72 40 L 84 25 L 96 40")
     .attr("fill", "none")
     .style("stroke", "white")
     .style("stroke-width", 2.5)
 ;
 
-viz.append("path")
+decorationGroup.append("path")
     .attr("d", "M 672 500 L 684 515 L 696 500")
     .attr("fill", "none")
     .style("stroke", "white")
     .style("stroke-width", 2.5)
 ;
 
-viz.append("path")
+decorationGroup.append("path")
     .attr("d", "M 255 750 q 14 25 28 0")
     .attr("fill", "none")
     .style("stroke", "white")
     .style("stroke-width", 2.5)
 ;
 
-viz.append("path")
+decorationGroup.append("path")
     .attr("d", "M 855 150 q 14 25 28 0")
     .attr("fill", "none")
     .style("stroke", "white")
     .style("stroke-width", 2.5)
 ;
 
-viz.append("path")
+decorationGroup.append("path")
     .attr("d", "M 1143 765 q 14 -25 28 0")
     .attr("fill", "none")
     .style("stroke", "white")
