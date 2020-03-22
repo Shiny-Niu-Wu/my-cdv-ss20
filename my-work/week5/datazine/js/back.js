@@ -257,6 +257,14 @@ function gotData(incomingData){
             .attr("clip-path", "url(#cut-off-right)")
   ;
 
+//virtual call
+  eyeGroup.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 120)
+            .style("fill", "green")
+  ;
+
 //eyeball
   eyeGroup.append("circle")
             .attr("cx", 0)
@@ -435,6 +443,104 @@ function gotData(incomingData){
               .attr("y", 84)
               .attr("transform", "rotate(-90)")
   ;
+
+  eyeGroup.append("line")
+                    .attr("x1", w / 2)
+                    .attr("y1", h / 2)
+                    .attr("x2", w / 2)
+                    .attr("y2", h/2 + 200)
+                    .style("stroke", "white")
+                    .style("stroke-width", 2.5)
+  ;
+
+  let descriptionGroup = viz
+    .append("g")
+      .attr("class", "descriptionGroup")
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<length of conversation by words>")
+                    .attr("class", "description")
+                    .attr("x", w / 2)
+                    .attr("y", h - 20)
+                    .attr("text-anchor", "middle")
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<night>")
+                    .attr("class", "description")
+                    .attr("x", w/2 - 160)
+                    .attr("y", h / 2)
+                    .attr("text-anchor", "end")
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<day>")
+                    .attr("class", "description")
+                    .attr("x", w/2 + 160)
+                    .attr("y", h / 2)
+                    .attr("text-anchor", "start")
+  ;
+
+  descriptionGroup.append("line")
+                    .attr("x1", w / 2)
+                    .attr("y1", h / 2 + 110)
+                    .attr("x2", w / 2)
+                    .attr("y2", h / 2 + 200)
+                    .style("stroke", "white")
+                    .style("stroke-width", 2.5)
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<virtual call between US & TW>")
+                    .attr("class", "description")
+                    .attr("x", w / 2)
+                    .attr("y", h / 2 + 220)
+                    .attr("text-anchor", "middle")
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<eye contact>")
+                    .attr("class", "description")
+                    .attr("x", w / 2)
+                    .attr("y", 140)
+                    .attr("text-anchor", "middle")
+  ;
+
+  descriptionGroup.append("text")
+                    .text(">3s")
+                    .attr("class", "description")
+                    .attr("x", w/2 + 10)
+                    .attr("y", 170)
+  ;
+
+  descriptionGroup.append("text")
+                    .text("1-3s")
+                    .attr("class", "description")
+                    .attr("x", w/2 + 100)
+                    .attr("y", 210)
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<1s")
+                    .attr("class", "description")
+                    .attr("x", w/2 + 180)
+                    .attr("y", 270)
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<emotion>")
+                    .attr("class", "description")
+                    .attr("x", w - 110)
+                    .attr("y", 620)
+  ;
+
+  descriptionGroup.append("text")
+                    .text("<emotion>")
+                    .attr("class", "description")
+                    .attr("x", 30)
+                    .attr("y", 180)
+  ;
 }
 
 function positionGroup(d, i){
@@ -454,77 +560,5 @@ function myEmotionPos(d, i){
   let middleY = 300 + (i+1)*8;
   return "M -600 " + sideY + " L 0 " + middleY + " L 600 " + sideY
 }
-
-let descriptionGroup = viz
-  .append("g")
-    .attr("class", "descriptionGroup")
-;
-
-descriptionGroup.append("text")
-    .text("<length of conversation by words>")
-    .attr("class", "description")
-    .attr("x", w / 2)
-    .attr("y", h - 20)
-    .attr("text-anchor", "middle")
-;
-
-descriptionGroup.append("text")
-    .text("<night>")
-    .attr("class", "description")
-    .attr("x", w/2 - 40)
-    .attr("y", 580)
-    .attr("text-anchor", "middle")
-;
-
-descriptionGroup.append("text")
-    .text("<day>")
-    .attr("class", "description")
-    .attr("x", w/2 + 35)
-    .attr("y", 580)
-    .attr("text-anchor", "middle")
-;
-
-descriptionGroup.append("text")
-    .text("<eye contact>")
-    .attr("class", "description")
-    .attr("x", w / 2)
-    .attr("y", 140)
-    .attr("text-anchor", "middle")
-;
-
-descriptionGroup.append("text")
-    .text(">3s")
-    .attr("class", "description")
-    .attr("x", w/2 + 10)
-    .attr("y", 170)
-;
-
-descriptionGroup.append("text")
-    .text("1-3s")
-    .attr("class", "description")
-    .attr("x", w/2 + 100)
-    .attr("y", 210)
-;
-
-descriptionGroup.append("text")
-    .text("<1s")
-    .attr("class", "description")
-    .attr("x", w/2 + 180)
-    .attr("y", 270)
-;
-
-descriptionGroup.append("text")
-    .text("<emotion>")
-    .attr("class", "description")
-    .attr("x", w - 110)
-    .attr("y", 620)
-;
-
-descriptionGroup.append("text")
-    .text("<emotion>")
-    .attr("class", "description")
-    .attr("x", 30)
-    .attr("y", 180)
-;
 
 d3.json("data.json").then(gotData);
