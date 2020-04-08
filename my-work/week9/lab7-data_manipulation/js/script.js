@@ -90,7 +90,12 @@ let graphGroup = viz.append("g").classed("graphGroup", true);
 // we have the page (with nothing on it) and we have data
 // we *toss* it both to D3 and let it do its evaluation about
 // how many elements need to enter/update/exit.
-let elementsForPage = graphGroup.selectAll(".datapoint").data(data);
+
+function dataKeys(d, i){
+  return d.key
+}
+
+let elementsForPage = graphGroup.selectAll(".datapoint").data(data, dataKeys);
 // note, we do not use ".enter()" for now. let's have a close look
 // at just this (the situation) for now
 // as we have learned, D3 did some kind of calculation here, some weighing
@@ -162,67 +167,342 @@ enteringDataGroups
     .attr("fill", "black")
 ;
 
+function checkData(){
+  console.log("new data", data)
+  elementsForPage = graphGroup.selectAll(".datapoint").data(data, dataKeys);
+  // note, we don't need "let" because the variable elementsForPage already exists
+  console.log(elementsForPage);
+}
 
+function updateAxis(){
+  //updating the list of existing datapoints
+  //and rescale xAxis accordingly
+  allNames = data.map(function(d){return d.key});
+  xScale.domain(allNames);
+  xAxis = d3.axisBottom(xScale); //we adjust this because it uses the new xScale
+  xAxis.tickFormat(d=>{return data.filter(dd=>dd.key==d)[0].name;});
+  xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18);
+  xAxisGroup.selectAll("line").remove();
 
+  // y scale...
+  yMax = d3.max(data, function(d){return d.value});
+  yDomain = [0, yMax+yMax*0.1];
+  yScale.domain(yDomain);
+}
 
 // binding functions to the buttons on the page
 // the functions we use to do the actual work are defined in dataManager.js
 function add(){
   addDatapoints(1);
 
-  // we add new code below:
-console.log("new data", data)
+  checkData();
 
-  // before we get back to dealing with the bars, we need to update
-  // out scales (and axis) to match the new data.
-  // scales are function we got custom made by D3.
-  // after using them for a bit, we can adjust their inner workings
-  // here we adjust the xScale we already defined and used. all
-  // we want to change about it is the domain.
-  // we get the updated list of keys for our data set that has changed:
-  allNames = data.map(function(d){return d.key});
-  // and adjust the domain of xScale:
-  xScale.domain(allNames);
-  // done, the xScale is "fixed" and ready to help us to position elements
-  // for our new data
+  updateAxis();
 
+  enteringElements = elementsForPage.enter();
 
+  elementsForPage.transition().duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
 
-  // as you can see, we only adjust selectively the bits that depend
-  // on our data. the same is true for the axis:
-  xAxis = d3.axisBottom(xScale); //we adjust this because it uses the new xScale
-  xAxis.tickFormat(d=>{return data.filter(dd=>dd.key==d)[0].name;}); // we adjust this because it uses the new data
-  //xAxisGroup.call(xAxis).selectAll("text").attr("font-size", 18); // we adjust this to bring the new axis onto the page
+  // the width needs to adjust, and even the height (as incoming data points MIGHT
+  // set a new maximum value and every other bar goes down a little)
+  elementsForPage.select("rect")
+   .transition()
+   //.delay(200)
+   .duration(400)
+   .attr("width", function(){
+      return xScale.bandwidth();
+   })
+   .attr("y", function(d,i){
+     return -yScale(d.value);
+   })
+   .attr("height", function(d, i){
+     return yScale(d.value);
+   })
+  ;
 
-  // y scale...
-  yMax = d3.max(data, function(d){return d.value});
-  yDomain = [0, yMax+yMax*0.1];
-  yScale.domain(yDomain);
-
-  // do you see how the axis adjusts to the new data at this point? you can animate
-  xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18); // we adjust this to bring the new axis onto the page
-  // this transition inside the statement where you use ".call(xAxis)"...
-
-
+  // lastly, we can deal with the elements that enter
+  // we already extracted the enteringElements from elementsForPage above
+  // what do we want to do with incoming elements?
+  // much the same we always do
+  // we append a group to the empty placeholder:
+  let incomingDataGroups = enteringElements
+    .append("g")
+      .classed("datapoint", true)
+  ;
+  // position the groups:
+  incomingDataGroups.attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+  // and append rectangles
+   incomingDataGroups
+    .append("rect")
+      .attr("y", function(d,i){
+        return 0;
+      })
+      .attr("height", function(d, i){
+        return 0;
+      })
+      .attr("width", function(){
+        return xScale.bandwidth();
+      })
+      .attr("fill", "#F27294")
+      .transition()
+      .delay(300)
+      .duration(200)
+      .attr("y", function(d,i){
+        return -yScale(d.value);
+      })
+      .attr("height", function(d, i){
+        return yScale(d.value);
+      })
+      .transition()
+      .delay(300)
+      .duration(600)
+      .attr("fill", "black")
+   ;
 }
 document.getElementById("buttonA").addEventListener("click", add);
 
 function remove(){
   removeDatapoints(1);
+
+  checkData();
+
+  updateAxis();
+
+  elementsForPage.select("rect")
+   .transition()
+   .duration(400)
+   .delay(200)
+   .attr("width", function(){
+      return xScale.bandwidth();
+   })
+   .attr("y", function(d,i){
+     return -yScale(d.value);
+   })
+   .attr("height", function(d, i){
+     return yScale(d.value);
+   })
+  ;
+
+  elementsForPage.transition().delay(200).duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+
+  //removing elements
+  exitingElements = elementsForPage.exit();
+
+  exitingElements.select("rect")
+   .attr("fill", "#04ADBF")
+   .transition()
+   //.delay(200)
+   .duration(200)
+   .attr("y", function(d,i){
+     return 0;
+   })
+   .attr("height", function(d, i){
+     return 0
+   })
+  ;
+
 }
 document.getElementById("buttonB").addEventListener("click", remove);
 
 function removeAndAdd(){
-  removeAndAddDatapoints(1,1);
+  //randomly add 1-2 bars, and also
+  //randomly remove 1-2 bars
+  let numR = Math.floor(Math.random()*2 + 1);
+  let numA = Math.floor(Math.random()*2 + 1);
+  removeAndAddDatapoints(numR, numA);
+
+  checkData();
+
+  updateAxis();
+
+  //ADD
+
+  enteringElements = elementsForPage.enter();
+
+  elementsForPage.transition().duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+
+  elementsForPage.select("rect")
+   .transition()
+   //.delay(200)
+   .duration(400)
+   .attr("width", function(){
+      return xScale.bandwidth();
+   })
+   .attr("y", function(d,i){
+     return -yScale(d.value);
+   })
+   .attr("height", function(d, i){
+     return yScale(d.value);
+   })
+  ;
+
+  let incomingDataGroups = enteringElements
+    .append("g")
+      .classed("datapoint", true)
+  ;
+  // position the groups:
+  incomingDataGroups.attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+  // and append rectangles
+   incomingDataGroups
+    .append("rect")
+      .attr("y", function(d,i){
+        return 0;
+      })
+      .attr("height", function(d, i){
+        return 0;
+      })
+      .attr("width", function(){
+        return xScale.bandwidth();
+      })
+      .attr("fill", "#F27294")
+      .transition()
+      .delay(300)
+      .duration(200)
+      .attr("y", function(d,i){
+        return -yScale(d.value);
+      })
+      .attr("height", function(d, i){
+        return yScale(d.value);
+      })
+      .transition()
+      .delay(300)
+      .duration(600)
+      .attr("fill", "black")
+   ;
+
+
+   //REMOVE
+
+   exitingElements = elementsForPage.exit();
+
+   exitingElements.select("rect")
+    .attr("fill", "#04ADBF")
+    .transition()
+    //.delay(200)
+    .duration(200)
+    .attr("y", function(d,i){
+      return 0;
+    })
+    .attr("height", function(d, i){
+      return 0
+    })
+   ;
 }
 document.getElementById("buttonC").addEventListener("click", removeAndAdd);
 
+//this can only be done once, if without new changes
+//because it will already be in order after 1 click
 function sortData(){
   sortDatapoints();
+
+  checkData();
+
+  updateAxis();
+
+  elementsForPage.transition().duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+
+  elementsForPage.select("rect")
+    .transition()
+    //.delay(200)
+    .duration(400)
+  ;
 }
 document.getElementById("buttonD").addEventListener("click", sortData);
 
 function shuffleData(){
   shuffleDatapoints();
+
+  checkData();
+
+  updateAxis();
+
+  elementsForPage.transition().duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+
+  elementsForPage.select("rect")
+    .transition()
+    //.delay(200)
+    .duration(400)
+  ;
 }
 document.getElementById("buttonE").addEventListener("click", shuffleData);
+
+//this change the bar appearance
+//either from rect to emoji(text)
+//or click once again
+//change from emoji back to rect
+let timesClicked = 0;
+function barSwitchBetweenRectEmoji(){
+  barAppearanceDatapoints();
+
+  checkData();
+
+  //updateAxis();
+
+  //rounding the values to integers
+  //to determine the number of emojis appeared
+  //let valueIntegers = data.map(function(d){return Math.round(d.value)});
+  //console.log(valueIntegers);
+
+  elementsForPage.transition().duration(400).attr("transform", function(d, i){
+    return "translate("+ xScale(d.key)+ "," + (h - padding) + ")"
+  });
+
+  timesClicked++;
+  console.log(timesClicked);
+  if (timesClicked%2 != 0) {
+    elementsForPage.select("rect")
+      .attr("fill", "#04ADBF")
+      .transition()
+      //.delay(200)
+      .duration(200)
+      .attr("y", function(d,i){
+        return 0;
+      })
+      .attr("height", function(d, i){
+        return 0
+      })
+    ;
+
+    enteringDataGroups.append("text")
+      .attr("transform", "rotate(-90)")
+      .transition()
+      .delay(200)
+      .duration(200)
+      .text((d, i) => d.name.repeat(d.value / 6))
+      .attr("font-size", 50)
+      .attr("y", "1em")
+    ;
+  } else {
+    elementsForPage.select("text").remove();
+
+    elementsForPage.select("rect")
+      .transition()
+      .delay(200)
+      .duration(200)
+     .attr("width", function(){
+        return xScale.bandwidth();
+     })
+     .attr("y", function(d,i){
+       return -yScale(d.value);
+     })
+     .attr("height", function(d, i){
+       return yScale(d.value);
+     })
+    ;
+  }
+}
+document.getElementById("buttonF").addEventListener("click", barSwitchBetweenRectEmoji);

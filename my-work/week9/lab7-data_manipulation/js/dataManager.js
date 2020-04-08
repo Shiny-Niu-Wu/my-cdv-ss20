@@ -186,3 +186,10 @@ function shuffleDatapoints(){
 shuffleDatapoints();
 
 //now bind this function to a button in script.js
+function barAppearanceDatapoints(){
+  console.log("hello");
+
+  //data.key =
+}
+
+barAppearanceDatapoints();
