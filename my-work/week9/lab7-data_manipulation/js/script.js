@@ -493,16 +493,22 @@ function barSwitchBetweenRectEmoji(){
       .transition()
       .delay(200)
       .duration(200)
-     .attr("width", function(){
-        return xScale.bandwidth();
-     })
-     .attr("y", function(d,i){
-       return -yScale(d.value);
-     })
-     .attr("height", function(d, i){
-       return yScale(d.value);
-     })
+      .attr("fill", "#F27294")
+      .attr("width", function(){
+         return xScale.bandwidth();
+      })
+      .attr("y", function(d,i){
+        return -yScale(d.value);
+      })
+      .attr("height", function(d, i){
+        return yScale(d.value);
+      })
+      .transition()
+      .delay(300)
+      .duration(600)
+      .attr("fill", "black")
     ;
+
   }
 }
 document.getElementById("buttonF").addEventListener("click", barSwitchBetweenRectEmoji);
