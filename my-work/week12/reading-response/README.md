@@ -1,4 +1,4 @@
-“Just because something isn’t new doesn’t mean that it’s not outrageous.” [source] (https://www.newyorker.com/tech/annals-of-technology/cambridge-analytica-and-our-lives-inside-the-surveillance-machine)
+“Just because something isn’t new doesn’t mean that it’s not outrageous.” [source](https://www.newyorker.com/tech/annals-of-technology/cambridge-analytica-and-our-lives-inside-the-surveillance-machine)
 
 I will begin with that quote. As more “Cambridge Analytica” (CA) are coming up, I fear that society will go numb, unless suddenly, people will no longer be passive information-receivers and actually take actions. Being surprised and worried is even better.
 
