@@ -1,0 +1,42 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  /* background-color: black; */
+  margin: 0;
+}
+
+.bg{
+  width: 100vw;
+  height: 50vh;
+}
+
+#container{
+  width: 100vw;
+  height: 300vh;
+  position: absolute;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section_div{
+
+}
+
+#downArrow{
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  color: white;
+  font-size: 50px;
+}
+
+#img_mic{
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 50vw;
+  height: 50vh;
+}
