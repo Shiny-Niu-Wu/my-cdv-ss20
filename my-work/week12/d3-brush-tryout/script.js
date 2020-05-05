@@ -19,13 +19,13 @@ d3.json("data.json").then(function gotData(incomingData){
     })
   ;
 
-  // datagroups.append("rect")
-  //   .attr("width", w/5)
-  //   .attr("height", 50)
-  //   .attr("class", "dataArea")
-  //   .attr("x", 0)
-  //   .attr("y", 0)
-  // ;
+  datagroups.append("rect")
+    .attr("width", w/5)
+    .attr("height", 50)
+    .attr("class", "dataArea")
+    .attr("x", 0)
+    .attr("y", 0)
+  ;
 });
 
 let brush = d3.brushX()
