@@ -5,6 +5,37 @@ html{
 body{
   /* background-color: black; */
   margin: 0;
+  font-family: 'Caladea', serif;
+  height: 300vh;
+}
+
+#title_the{
+  font-size: 30px;
+}
+
+#title_final{
+  font-size: 60px;
+  letter-spacing: 0.4em;
+}
+
+#title_blessing{
+  font-size: 60px;
+  letter-spacing: 0.4em;
+}
+
+/* .brushGraphGroup .brushInterXGroup .brush{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0vh;
+  z-index: 5;
+} */
+
+.brush .selection{
+  fill: black;
+}
+
+.dataArea{
+
 }
 
 .bg{
@@ -35,8 +66,14 @@ body{
 
 #img_mic{
   position: absolute;
-  top: 50vh;
-  left: 50vw;
-  width: 50vw;
-  height: 50vh;
+  top: 0;
+  left: 38vw;
+  width: 300px;
+  height: 120vh;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+#full_statement{
+  font-family: "Helvetica Neue";
 }

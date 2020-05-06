@@ -20,7 +20,7 @@ section1.append("text")
   .text("the")
   .attr("id", "title_the")
   .attr("x", w/2)
-  .attr("y", "5vh")
+  .attr("y", "8vh")
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
@@ -44,13 +44,13 @@ section1.append("text")
 ;
 
 //mic image placeholder
-section1.append("text")
-  .text("[insert mic pic]")
-  .attr("x", w/2)
-  .attr("y", h/6)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
+// section1.append("text")
+//   .text("[insert mic pic]")
+//   .attr("x", w/2)
+//   .attr("y", h/6)
+//   .style("text-anchor", "middle")
+//   .style("fill", "white")
+// ;
 // section1.append("image")
 //   .attr("id", "img_mic")
 //   .attr("xlink:href", "images/XXX")
@@ -100,29 +100,34 @@ let navigationGroup = section2
     .attr("transform", "translate(0, " + (h/6) + ")")
 ;
 
-//navigation bar placeholder
-navigationGroup.append("rect")
-  .attr("width", w)
-  .attr("height", "2em")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("fill", "red")
+let brushGraphGroup = section2.append("g").attr("class", "brushGraphGroup");
+let brushInterXGroup = section2.append("g").attr("class", "brushInterXGroup");
+
+let xScale = d3.scaleLinear().range([0, w]);
+
+let brush = d3.brushX()
+  .extent([[0, h/6], [w, (h/6)+20]])
 ;
+
+let brushArea = brushInterXGroup.append("g")
+  .attr("class", "brush")
+  .call(brush)
+  // default selection area
+  .call(brush.move, [w/2, (w/2)+3])
+;
+// removes handle to resize the brush
+d3.selectAll('.brush>.handle').remove();
+// removes crosshair cursor
+d3.selectAll('.brush>.overlay').remove();
 
 //bed image placeholder
 section2.append("text")
-  .text("[insert bed pic]")
+  .text("[insert a bed changing its shape]")
   .attr("x", w/2)
   .attr("y", h/4)
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
-// section1.append("image")
-//   .attr("id", "img_bed")
-//   .attr("xlink:href", "images/XXX")
-//   .attr("x", 0)
-//   .attr("y", 0)
-// ;
 
 let section3 = viz.append("g")
   .attr("class", "section_div")
@@ -135,24 +140,6 @@ section3.append("image")
   .attr("xlink:href", "images/rainbow.svg")
   .attr("x", 0)
   .attr("y", 0)
-;
-
-section3.append("text")
-  .text("[full last statement]")
-  .attr("id", "full_statement")
-  .attr("x", w/2)
-  .attr("y", h/12)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
-
-section3.append("text")
-  .text("[all the statements layered on top of each other]")
-  .attr("id", "all_statement")
-  .attr("x", w/2)
-  .attr("y", h/4)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
 ;
 
 section3.append("text")
@@ -173,13 +160,148 @@ section3.append("text")
   .style("fill", "white")
 ;
 
-d3.csv("first-words.csv").then(gotData);
-//still need to import last words data
-//maybe combine the two data files
+d3.csv("first-words.csv").then(function(gotData){
+  // I want to get the avg frequency
+  // gotData.forEach((d, i) => {
+  //   gotData[i].avg = (d.fre16 + d.fre17 + d.fre18 + d.fre19 + d.fre20 + d.fre21 + d.fre22 + d.fre23 + d.fre24 + d.fre25 + d.fre26 + d.fre27 + d.fre28 + d.fre29 + d.fre30)/15;
+  // });
+  // console.log(gotData[2].fre24);
 
-function gotData(incomingData){
-  console.log("hello");
-}
+  d3.json("death.json").then(function(incomingData){
+    console.log("data loaded");
+
+//!!!!!!!!!!!!!!check the matched words!!!!!!!!!!!!!!!
+
+    // var string = "hi, I need support for apple, android and nokia phones.";
+    // var keywords = ['apple', 'nokia', 'android'];
+    // var results = [];
+    // for(var i = 0; i < keywords.length; i++) {
+    //     if ((new RegExp("\\b" + keywords[i] + "\\b", "i").test(string)) {
+    //         results.push(keywords[i]);
+    //     }
+    // }
+    // alert( "contains: " + results );
+
+// first turn all first words into an array
+    let firstWords = gotData.map(d=>d.definition);
+    // console.log(firstWords);
+    //also turn the last statements into an array
+    let lastSentences = incomingData.map(d=>d.laststatement);
+    // console.log(lastSentences);
+
+//match first words and last words
+    lastSentences.forEach((item, id) => {
+      for(i = 0; i < firstWords.length; i++){
+        var match = lastSentences[id].match(firstWords[i]);
+        console.log(match);
+      }
+    });
+
+//enter() all matchedWords as texts
+
+
+
+    xScale.domain([0, incomingData.length-1]);
+    brush.on("end", brushend);
+    let datagroups = brushGraphGroup.selectAll(".datapoint").data(incomingData).enter()
+      .append("g")
+      .attr("class", "datapoint")
+      .attr("transform", function(d, i){
+        let x = xScale(i);
+        return "translate(" + x + ", " + (h/6)  + ")"
+      })
+    ;
+    datagroups.append("rect")
+      .attr("width", w/incomingData.length)
+      .attr("height", 20)
+      .attr("class", "dataArea")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("fill", "white")
+    ;
+
+    let selectionIndex = Math.round((incomingData.length)/2);
+    console.log("default selection", selectionIndex);
+
+    let fullStatment = section3.append("text")
+      .text(incomingData[selectionIndex].laststatement)
+      .attr("id", "full_statement")
+      .attr("x", w/2)
+      .attr("y", h/12)
+      .style("text-anchor", "middle")
+      .style("fill", "white")
+      .call(wrap, w*0.85);
+    ;
+
+    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+      .append("text")
+        .text((d, i) => incomingData[i].laststatement)
+        .attr("class", "all_statement")
+        .attr("x", w/2)
+        .attr("y", h/6 + 30)
+        .style("text-anchor", "middle")
+        .style("fill", "white")
+        .style("font-size", 12)
+        .call(wrap, w*0.95);
+    ;
+
+    // update
+    //this is whenever a selection is done
+    function brushend(){
+      let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
+      selectionIndex = Math.round(leftEdgeOfBrush);
+      // datagroups.select("rect").attr("fill", "white")
+      datagroups.filter((d, i)=>{
+        return i == selectionIndex;
+      })//.select("rect").attr("fill", "white")
+      fullStatment.text(incomingData[selectionIndex].laststatement).call(wrap, w*0.85);
+      // section3.selectAll(".all_statement").text((d, i) => incomingData[i].laststatement).call(wrap, w*0.95);
+      console.log("selction:", incomingData[selectionIndex].execution);
+    }
+
+    //wrapping text
+    //following and credit to https://stackoverflow.com/questions/24784302/wrapping-text-in-d3/24785497
+    function wrap(text, width) {
+      text.each(function () {
+          var text = d3.select(this),
+              words = text.text().split(/\s+/).reverse(),
+              word,
+              line = [],
+              lineNumber = 0,
+              lineHeight = 1.2, // ems
+              x = text.attr("x"),
+              y = text.attr("y"),
+              dy = 0, //parseFloat(text.attr("dy")),
+              tspan = text.text(null)
+                          .append("tspan")
+                          .attr("x", x)
+                          .attr("y", y)
+                          .attr("dy", dy + "em");
+          while (word = words.pop()) {
+              line.push(word);
+              tspan.text(line.join(" "));
+              if (tspan.node().getComputedTextLength() > width) {
+                  line.pop();
+                  tspan.text(line.join(" "));
+                  line = [word];
+                  tspan = text.append("tspan")
+                              .attr("x", x)
+                              .attr("y", y)
+                              .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                              .text(word);
+              }
+          }
+      });
+    }
+
+
+
+
+
+  });
+});
+
+//maybe combine the two data files
 
 //scroll down arrow
 
