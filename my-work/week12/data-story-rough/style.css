@@ -1,4 +1,5 @@
 html{
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -34,10 +35,6 @@ body{
   fill: black;
 }
 
-.dataArea{
-
-}
-
 .bg{
   width: 100vw;
   height: 50vh;
@@ -52,16 +49,32 @@ body{
   flex-direction: column;
 }
 
-.section_div{
-
-}
-
-#downArrow{
+.downArrow{
   position: fixed;
-  bottom: 5vh;
+  bottom: 2vh;
   right: 5vw;
   color: white;
   font-size: 50px;
+}
+
+.upArrow{
+  position: fixed;
+  bottom: 7.8vh;
+  right: 5vw;
+  color: white;
+  font-size: 50px;
+}
+
+#section_link2_1{
+  display: none;
+}
+
+#section_link3_2{
+  display: none;
+}
+
+#section_link2_3{
+  display: none;
 }
 
 #img_mic{

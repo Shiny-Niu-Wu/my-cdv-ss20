@@ -192,8 +192,8 @@ d3.csv("first-words.csv").then(function(gotData){
 //match first words and last words
     lastSentences.forEach((item, id) => {
       for(i = 0; i < firstWords.length; i++){
-        var match = lastSentences[id].match(firstWords[i]);
-        console.log(match);
+        var match = item.match(firstWords[i]);
+        // console.log(match);
       }
     });
 
@@ -233,17 +233,17 @@ d3.csv("first-words.csv").then(function(gotData){
       .call(wrap, w*0.85);
     ;
 
-    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
-      .append("text")
-        .text((d, i) => incomingData[i].laststatement)
-        .attr("class", "all_statement")
-        .attr("x", w/2)
-        .attr("y", h/6 + 30)
-        .style("text-anchor", "middle")
-        .style("fill", "white")
-        .style("font-size", 12)
-        .call(wrap, w*0.95);
-    ;
+    // let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+    //   .append("text")
+    //     .text((d, i) => incomingData[i].laststatement)
+    //     .attr("class", "all_statement")
+    //     .attr("x", w/2)
+    //     .attr("y", h/6 + 30)
+    //     .style("text-anchor", "middle")
+    //     .style("fill", "white")
+    //     .style("font-size", 12)
+    //     .call(wrap, w*0.95);
+    // ;
 
     // update
     //this is whenever a selection is done
@@ -303,33 +303,37 @@ d3.csv("first-words.csv").then(function(gotData){
 
 //maybe combine the two data files
 
-//scroll down arrow
 
-//let nextSection = document.getElementById("section_link").href;
+let firstToSecond = document.getElementById("section_link1_2");
+let secondToThird = document.getElementById("section_link2_3");
+let secondToFirst = document.getElementById("section_link2_1");
+let thirdToSecond = document.getElementById("section_link3_2");
 
-// let counter = 0;
-// let nextSection;
-// function goToNextSection(){
-//   counter++;
-//   if (counter === 1) {
-//     nextSection = "#sec2";
-//     counter ++;
-//   } else if (counter === 2) {
-//     nextSection = "#sec3";
-//     counter ++;
-//   } else {
-//     counter = 1;
-//   }
-//   console.log(counter);
-//   return nextSection
-// }
-//
-// section1.append("a")
-//   .attr("xlink:href", "javascript:void(0)")
-//   .on("clicked", goToNextSection)
-//   .append("text")
-//     .text("↧")
-//     .attr("fill", "white")
-//     .attr("x", w * 0.9)
-//     .attr("y", h / 7)
-// ;
+firstToSecond.href = "#sec2";
+secondToThird.href = "#sec3";
+thirdToSecond.href = "#sec2";
+secondToFirst.href = "#sec1";
+
+function go1to2(){
+  firstToSecond.style.display = "none";
+  secondToThird.style.display = "block";
+  secondToFirst.style.display = "block";
+}
+
+function go2to3(){
+  secondToThird.style.display = "none";
+  secondToFirst.style.display = "none";
+  thirdToSecond.style.display = "block";
+}
+
+function go3to2(){
+  thirdToSecond.style.display = "none";
+  secondToThird.style.display = "block"
+  secondToFirst.style.display = "block";
+}
+
+function go2to1(){
+  secondToFirst.style.display = "none";
+  secondToThird.style.display = "none";
+  firstToSecond.style.display = "block";
+}
