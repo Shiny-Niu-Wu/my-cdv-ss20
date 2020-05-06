@@ -19,8 +19,8 @@ let section1 = viz.append("g")
 section1.append("text")
   .text("the")
   .attr("id", "title_the")
-  .attr("x", w/2)
-  .attr("y", "8vh")
+  .attr("x", w/2 - 80)
+  .attr("y", "12vh")
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
@@ -42,21 +42,6 @@ section1.append("text")
   .style("text-anchor", "end")
   .style("fill", "white")
 ;
-
-//mic image placeholder
-// section1.append("text")
-//   .text("[insert mic pic]")
-//   .attr("x", w/2)
-//   .attr("y", h/6)
-//   .style("text-anchor", "middle")
-//   .style("fill", "white")
-// ;
-// section1.append("image")
-//   .attr("id", "img_mic")
-//   .attr("xlink:href", "images/XXX")
-//   .attr("x", 0)
-//   .attr("y", 0)
-// ;
 
 let section2 = viz.append("g")
   .attr("class", "section_div")
@@ -233,17 +218,17 @@ d3.csv("first-words.csv").then(function(gotData){
       .call(wrap, w*0.85);
     ;
 
-    // let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
-    //   .append("text")
-    //     .text((d, i) => incomingData[i].laststatement)
-    //     .attr("class", "all_statement")
-    //     .attr("x", w/2)
-    //     .attr("y", h/6 + 30)
-    //     .style("text-anchor", "middle")
-    //     .style("fill", "white")
-    //     .style("font-size", 12)
-    //     .call(wrap, w*0.95);
-    // ;
+    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+      .append("text")
+        .text((d, i) => incomingData[i].laststatement)
+        .attr("class", "all_statement")
+        .attr("x", w/2)
+        .attr("y", h/6 + 30)
+        .style("text-anchor", "middle")
+        .style("fill", "white")
+        .style("font-size", 12)
+        .call(wrap, w*0.95);
+    ;
 
     // update
     //this is whenever a selection is done

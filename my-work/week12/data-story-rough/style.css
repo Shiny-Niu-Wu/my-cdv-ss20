@@ -53,7 +53,7 @@ body{
   position: fixed;
   bottom: 2vh;
   right: 5vw;
-  color: white;
+  color: #aaaaaa;
   font-size: 50px;
 }
 
@@ -61,8 +61,18 @@ body{
   position: fixed;
   bottom: 7.8vh;
   right: 5vw;
-  color: white;
+  color: #aaaaaa;
   font-size: 50px;
+}
+
+.downArrow:hover{
+  color: white;
+  cursor: pointer;
+}
+
+.upArrow:hover{
+  color: white;
+  cursor: pointer;
 }
 
 #section_link2_1{
@@ -80,11 +90,11 @@ body{
 #img_mic{
   position: absolute;
   top: 0;
-  left: 38vw;
-  width: 300px;
+  left: 20vw;
+  width: 500px;
   height: 120vh;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
 }
 
 #full_statement{
