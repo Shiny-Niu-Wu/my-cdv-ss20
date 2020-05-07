@@ -19,7 +19,7 @@ let section1 = viz.append("g")
 section1.append("text")
   .text("the")
   .attr("id", "title_the")
-  .attr("x", w/2 - 80)
+  .attr("x", w/2 - 60)
   .attr("y", "12vh")
   .style("text-anchor", "middle")
   .style("fill", "white")
@@ -60,7 +60,7 @@ section2.append("image")
 section2.append("text")
   .text("[matched first words]")
   .attr("x", w/6)
-  .attr("y", 0)
+  .attr("y", 100)
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
@@ -152,7 +152,7 @@ d3.csv("first-words.csv").then(function(gotData){
   // });
   // console.log(gotData[2].fre24);
 
-  d3.json("death.json").then(function(incomingData){
+  d3.json("last-words.json").then(function(incomingData){
     console.log("data loaded");
 
 //!!!!!!!!!!!!!!check the matched words!!!!!!!!!!!!!!!
@@ -171,16 +171,16 @@ d3.csv("first-words.csv").then(function(gotData){
     let firstWords = gotData.map(d=>d.definition);
     // console.log(firstWords);
     //also turn the last statements into an array
-    let lastSentences = incomingData.map(d=>d.laststatement);
+    let lastSentences = incomingData.map(d=>d['Last Statement']);
     // console.log(lastSentences);
 
 //match first words and last words
-    lastSentences.forEach((item, id) => {
-      for(i = 0; i < firstWords.length; i++){
-        var match = item.match(firstWords[i]);
-        // console.log(match);
-      }
-    });
+    // lastSentences.forEach((item, id) => {
+    //   for(i = 0; i < firstWords.length; i++){
+    //     var match = item.match(firstWords[i]);
+    //     // console.log(match);
+    //   }
+    // });
 
 //enter() all matchedWords as texts
 
@@ -209,7 +209,7 @@ d3.csv("first-words.csv").then(function(gotData){
     console.log("default selection", selectionIndex);
 
     let fullStatment = section3.append("text")
-      .text(incomingData[selectionIndex].laststatement)
+      .text(incomingData[selectionIndex]['Last Statement'])
       .attr("id", "full_statement")
       .attr("x", w/2)
       .attr("y", h/12)
@@ -218,17 +218,17 @@ d3.csv("first-words.csv").then(function(gotData){
       .call(wrap, w*0.85);
     ;
 
-    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
-      .append("text")
-        .text((d, i) => incomingData[i].laststatement)
-        .attr("class", "all_statement")
-        .attr("x", w/2)
-        .attr("y", h/6 + 30)
-        .style("text-anchor", "middle")
-        .style("fill", "white")
-        .style("font-size", 12)
-        .call(wrap, w*0.95);
-    ;
+    // let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+    //   .append("text")
+    //     .text((d, i) => incomingData[i]['Last Statement'])
+    //     .attr("class", "all_statement")
+    //     .attr("x", w/2)
+    //     .attr("y", h/6 + 30)
+    //     .style("text-anchor", "middle")
+    //     .style("fill", "white")
+    //     .style("font-size", 12)
+    //     .call(wrap, w*0.95);
+    // ;
 
     // update
     //this is whenever a selection is done
@@ -239,9 +239,9 @@ d3.csv("first-words.csv").then(function(gotData){
       datagroups.filter((d, i)=>{
         return i == selectionIndex;
       })//.select("rect").attr("fill", "white")
-      fullStatment.text(incomingData[selectionIndex].laststatement).call(wrap, w*0.85);
+      fullStatment.text(incomingData[selectionIndex]['Last Statement']).call(wrap, w*0.85);
       // section3.selectAll(".all_statement").text((d, i) => incomingData[i].laststatement).call(wrap, w*0.95);
-      console.log("selction:", incomingData[selectionIndex].execution);
+      console.log("selction:", incomingData[selectionIndex].Execution_Number);
     }
 
     //wrapping text
