@@ -43,6 +43,37 @@ section1.append("text")
   .style("fill", "white")
 ;
 
+let section3 = viz.append("g")
+  .attr("class", "section_div")
+  .attr("id", "sec3")
+  .attr("transform", "translate(0, " + (h/3)*2 + ")")
+;
+
+section3.append("image")
+  .attr("class", "bg")
+  .attr("xlink:href", "images/rainbow.svg")
+  .attr("x", 0)
+  .attr("y", 0)
+;
+
+section3.append("text")
+  .text("created by")
+  .attr("id", "text_created")
+  .attr("x", w/2)
+  .attr("y", "90vh")
+  .style("text-anchor", "middle")
+  .style("fill", "white")
+;
+
+section3.append("text")
+  .text("Shiny Shuan-Yi Wu")
+  .attr("id", "text_Shiny")
+  .attr("x", w/2)
+  .attr("y", "95vh")
+  .style("text-anchor", "middle")
+  .style("fill", "white")
+;
+
 let section2 = viz.append("g")
   .attr("class", "section_div")
   .attr("id", "sec2")
@@ -56,22 +87,27 @@ section2.append("image")
   .attr("y", h/6)
 ;
 
+let matchedWordsGroup = section2.append("g")
+  .attr("class", "matchedWordsGroup")
+  .attr("transform", "translate(0, 0)")
+;
+
 //matched first words placholder
-section2.append("text")
+matchedWordsGroup.append("text")
   .text("[matched first words]")
   .attr("x", w/6)
   .attr("y", 100)
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
-section2.append("text")
+matchedWordsGroup.append("text")
   .text("[matched first words]")
   .attr("x", (w*4)/5)
   .attr("y", h/8)
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
-section2.append("text")
+matchedWordsGroup.append("text")
   .text("[matched first words]")
   .attr("x", w/2)
   .attr("y", h/14)
@@ -106,44 +142,13 @@ d3.selectAll('.brush>.handle').remove();
 d3.selectAll('.brush>.overlay').remove();
 
 //bed image placeholder
-section2.append("text")
-  .text("[insert a bed changing its shape]")
-  .attr("x", w/2)
-  .attr("y", h/4)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
-
-let section3 = viz.append("g")
-  .attr("class", "section_div")
-  .attr("id", "sec3")
-  .attr("transform", "translate(0, " + (h/3)*2 + ")")
-;
-
-section3.append("image")
-  .attr("class", "bg")
-  .attr("xlink:href", "images/rainbow.svg")
-  .attr("x", 0)
-  .attr("y", 0)
-;
-
-section3.append("text")
-  .text("created by")
-  .attr("id", "text_created")
-  .attr("x", w/2)
-  .attr("y", "90vh")
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
-
-section3.append("text")
-  .text("Shiny Shuan-Yi Wu")
-  .attr("id", "text_Shiny")
-  .attr("x", w/2)
-  .attr("y", "95vh")
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
+// section2.append("text")
+//   .text("[insert a bed changing its shape]")
+//   .attr("x", w/2)
+//   .attr("y", h/4)
+//   .style("text-anchor", "middle")
+//   .style("fill", "white")
+// ;
 
 d3.csv("first-words.csv").then(function(gotData){
   // I want to get the avg frequency
@@ -187,7 +192,9 @@ d3.csv("first-words.csv").then(function(gotData){
 
 
     xScale.domain([0, incomingData.length-1]);
-    brush.on("end", brushend);
+    brush.on("end", brushEnd);
+    brush.on("brush", brushMove);
+
     let datagroups = brushGraphGroup.selectAll(".datapoint").data(incomingData).enter()
       .append("g")
       .attr("class", "datapoint")
@@ -206,42 +213,248 @@ d3.csv("first-words.csv").then(function(gotData){
     ;
 
     let selectionIndex = Math.round((incomingData.length)/2);
-    console.log("default selection", selectionIndex);
+    // console.log("default selection", selectionIndex);
+
+    let selectedData;
+    function getSelectedData(){
+      for (var i=0; i < incomingData.length; i++) {
+        if (incomingData[i].Execution_Number == incomingData[selectionIndex].Execution_Number){
+          selectedData = incomingData[i];
+        }
+      }
+      console.log(selectedData);
+    }
+    getSelectedData();
+
+    let brushMoveIndicator = section2.append("text")
+      .text("↔")
+      .attr("x", xScale(selectionIndex) - 1)
+      .attr("y", (h/6)-10)
+      .attr("fill", "white")
+      .style("text-anchor", "middle")
+    ;
+
+    let currentNumber = section2.append("text")
+      .text("Executed #" + selectedData.Execution_Number)
+      .attr("x", xScale(selectionIndex) - 1)
+      .attr("y", (h/6)+25)
+      .attr("fill", "white")
+      .style("text-anchor", "middle")
+      .call(wrap, 40);
+    ;
 
     let fullStatment = section3.append("text")
       .text(incomingData[selectionIndex]['Last Statement'])
       .attr("id", "full_statement")
       .attr("x", w/2)
-      .attr("y", h/12)
+      .attr("y", h/14)
       .style("text-anchor", "middle")
       .style("fill", "white")
       .call(wrap, w*0.85);
     ;
 
-    // let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
-    //   .append("text")
-    //     .text((d, i) => incomingData[i]['Last Statement'])
-    //     .attr("class", "all_statement")
-    //     .attr("x", w/2)
-    //     .attr("y", h/6 + 30)
-    //     .style("text-anchor", "middle")
-    //     .style("fill", "white")
-    //     .style("font-size", 12)
-    //     .call(wrap, w*0.95);
-    // ;
+    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+      .append("text")
+        .text((d, i) => incomingData[i]['Last Statement'])
+        .attr("class", "all_statement")
+        .attr("x", w/2)
+        .attr("y", h/6 + 30)
+        .style("text-anchor", "middle")
+        .style("fill", "white")
+        .style("font-size", 12)
+        .call(wrap, w*0.95);
+    ;
+
+//drawBed
+    let bedGroup = section2.append("g")
+      .attr("class", "bedGroup")
+      .attr("transform", "translate(0, " + h/6 + ")")
+    ;
+
+    function getAgeWidth(){
+      let age = Number(selectedData.info.Age);
+      let ageWidth = w*0.4 + age*10;
+      // console.log(age);
+      return ageWidth - 10
+    }
+
+    function getEducationWidth(){
+      let educationLevel;
+      if (selectedData.info['Education Level (Highest Grade Completed)'] != "") {
+        educationLevel = Number(selectedData.info['Education Level (Highest Grade Completed)']);
+      } else {
+        educationLevel = 1;
+      }
+      let educationWidth = w*0.1 + educationLevel*15;
+
+      return educationWidth + 10
+    }
+
+    function getOffenceAgeWidth(){
+      let offenceAge;
+      if (selectedData.info['Age (at the time of Offense)'] && selectedData.info['Age (at the time of Offense)'] != "") {
+        offenceAge = Number(selectedData.info['Age (at the time of Offense)']);
+      } else {
+        offenceAge = 1;
+      }
+      let offenceAgeWidth = getEducationWidth() + offenceAge*3;
+
+      return offenceAgeWidth - 20
+    }
+
+    function getOffenceDateWidth(){
+      let offenceAge;
+      if (selectedData.info['Age (at the time of Offense)'] && selectedData.info['Age (at the time of Offense)'] != "") {
+        offenceAge = Number(selectedData.info['Age (at the time of Offense)']);
+      } else {
+        offenceAge = 1;
+      }
+      let offenceAgeWidth = getEducationWidth() + offenceAge*3;
+
+      return offenceAgeWidth + 100
+    }
+
+    function drawBed(){
+      let age = Number(selectedData.info.Age);
+      let ageWidth = w*0.4 + age*10;
+
+      let educationLevel;
+      if (selectedData.info['Education Level (Highest Grade Completed)'] != "") {
+        educationLevel = Number(selectedData.info['Education Level (Highest Grade Completed)']);
+      } else {
+        educationLevel = 1;
+      }
+      let educationWidth = w*0.1 + educationLevel*15;
+
+      let offenceAge;
+      if (selectedData.info['Age (at the time of Offense)'] && selectedData.info['Age (at the time of Offense)'] != "") {
+        offenceAge = Number(selectedData.info['Age (at the time of Offense)']);
+      } else {
+        offenceAge = 1;
+      }
+      let offenceAgeWidth = educationWidth + offenceAge*3;
+
+      let bedPoints = [
+        {x:w*0.1, y0:h/12, y1:h/6},
+
+        {x:educationWidth, y0:h/12, y1:h/6},
+        {x:educationWidth, y0:h/24, y1:h*5/24},
+
+        {x:offenceAgeWidth, y0:h/24, y1:h*5/24},
+        {x:offenceAgeWidth, y0:h/12, y1:h/6},
+
+        {x:ageWidth, y0:h/12, y1:h/6}
+      ];
+
+      return bedPoints
+    }
+
+    let bedArea = d3.area()
+      .x(function(d){return d.x})
+      .y0(function(d){return d.y0})
+      .y1(function(d){return d.y1})
+    ;
+
+    let bedPath = bedGroup.append("path")
+      .data(drawBed)
+      .attr("d", bedArea(drawBed()))
+      .attr("fill", "none")
+      .style("stroke", "white")
+      .style("stroke-width", 2.5)
+    ;
+
+    let ageText = bedGroup.append("text")
+      .text(selectedData.info.Age)
+      .attr("x", getAgeWidth)
+      .attr("y", h/6 - 10)
+      .style("text-anchor", "end")
+      .style("fill", "white")
+    ;
+
+    let educationText = bedGroup.append("text")
+      .text(selectedData.info['Education Level (Highest Grade Completed)'])
+      .attr("x", getEducationWidth)
+      .attr("y", h/6 + 15)
+      .style("text-anchor", "start")
+      .style("fill", "white")
+    ;
+
+    let offenceAgeText = bedGroup.append("text")
+      .text(selectedData.info['Age (at the time of Offense)'])
+      .attr("x", getOffenceAgeWidth)
+      .attr("y", h/24 + 20)
+      .style("text-anchor", "end")
+      .style("fill", "white")
+    ;
+
+    let birthDateText = bedGroup.append("text")
+      .text(selectedData.info['Date of Birth'])
+      .attr("x", w*0.25)
+      .attr("y", (h/6 + h/12)/2)
+      .style("text-anchor", "start")
+      .style("fill", "white")
+    ;
+
+    let offenseDateText = bedGroup.append("text")
+      .text(selectedData.info['Date of Offense'])
+      .attr("x", getOffenceDateWidth)
+      .attr("y", h/12 + 30)
+      .style("text-anchor", "start")
+      .style("fill", "white")
+    ;
+
+    let receiveDateText = bedGroup.append("text")
+      .text(selectedData.info['Date Received'])
+      .attr("x", getOffenceDateWidth)
+      .attr("y", h/6 - 30)
+      .style("text-anchor", "start")
+      .style("fill", "white")
+    ;
+
+    let executionDateText = bedGroup.append("text")
+      .text(selectedData.info['Date_Executed'])
+      .attr("x", getAgeWidth)
+      .attr("y", (h/6 + h/12)/2)
+      .style("text-anchor", "end")
+      .style("fill", "white")
+    ;
+
+    bedGroup.append("image")
+      .attr("class", "pillow")
+      .attr("xlink:href", "images/pillow.png")
+      .attr("x", w*0.09)
+      .attr("y", h/12)
+      .attr("width", w*0.15)
+      .attr("height", h/6 - h/12)
+    ;
 
     // update
     //this is whenever a selection is done
-    function brushend(){
+    function brushMove(){
+      let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
+      selectionIndex = Math.round(leftEdgeOfBrush);
+      brushMoveIndicator.attr("x", xScale(selectionIndex));
+      currentNumber.text("Executed #" + incomingData[selectionIndex].Execution_Number).attr("x", xScale(selectionIndex) - 1).call(wrap, 40);
+    }
+    function brushEnd(){
       let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
       selectionIndex = Math.round(leftEdgeOfBrush);
       // datagroups.select("rect").attr("fill", "white")
       datagroups.filter((d, i)=>{
         return i == selectionIndex;
       })//.select("rect").attr("fill", "white")
-      fullStatment.text(incomingData[selectionIndex]['Last Statement']).call(wrap, w*0.85);
-      // section3.selectAll(".all_statement").text((d, i) => incomingData[i].laststatement).call(wrap, w*0.95);
-      console.log("selction:", incomingData[selectionIndex].Execution_Number);
+      brushMoveIndicator.attr("x", xScale(selectionIndex));
+      getSelectedData();
+      console.log("selction:", selectedData.Execution_Number);
+      bedPath.data(drawBed).attr("d", bedArea(drawBed())).transition();
+      ageText.text(selectedData.info.Age).attr("x", getAgeWidth);
+      educationText.text(selectedData.info['Education Level (Highest Grade Completed)']).attr("x", getEducationWidth);
+      offenceAgeText.text(selectedData.info['Age (at the time of Offense)']).attr("x", getOffenceAgeWidth);
+      offenseDateText.text(selectedData.info['Date of Offense']).attr("x", getOffenceDateWidth);
+      receiveDateText.text(selectedData.info['Date Received']).attr("x", getOffenceDateWidth);
+      executionDateText.text(selectedData.info['Date_Executed']).attr("x", getAgeWidth);
+      birthDateText.text(selectedData.info['Date of Birth']);
+      fullStatment.text(selectedData['Last Statement']).call(wrap, w*0.85);
     }
 
     //wrapping text
@@ -276,11 +489,8 @@ d3.csv("first-words.csv").then(function(gotData){
                               .text(word);
               }
           }
-      });
-    }
-
-
-
+        });
+      }
 
 
   });

@@ -244,7 +244,7 @@
       "Date of Birth": "9/2/1967",
       "Date Received": "3/31/2000",
       "Age (when Received)": "32",
-      "Education Level (Highest Grade Completed)": "6 years",
+      "Education Level (Highest Grade Completed)": "6",
       "Date of Offense": "5/19/1998",
       "Age (at the time of Offense)": "30",
       "TDCJ_Number": "999351",
@@ -308,7 +308,7 @@
       "Date of Birth": "04/04/1987",
       "Date Received": "02/27/2009",
       "Age (when Received)": "21",
-      "Education Level (Highest Grade Completed)": "11th Grade",
+      "Education Level (Highest Grade Completed)": "11",
       "Date of Offense": "04/06/2008",
       "Age (at the time of Offense)": "21",
       "TDCJ_Number": "999545",
@@ -324,7 +324,7 @@
       "Date of Birth": "03/26/1980",
       "Date Received": "05/14/2008",
       "Age (when Received)": "28",
-      "Education Level (Highest Grade Completed)": "12th Grade",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "09/13/2005",
       "Age (at the time of Offense)": "25",
       "TDCJ_Number": "999534",
@@ -465,7 +465,7 @@
       "Date of Birth": "08/10/1973",
       "Date Received": "12/04/2003",
       "Age (when Received)": "30",
-      "Education Level (Highest Grade Completed)": "12th grade",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "07/08/2002",
       "Age (at the time of Offense)": "28",
       "TDCJ_Number": "999463",
@@ -481,7 +481,7 @@
       "Date of Birth": "09/29/1968",
       "Date Received": "03/12/2008",
       "Age (when Received)": "39",
-      "Education Level (Highest Grade Completed)": "12th Grade",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "10/28/2005",
       "Age (at the time of Offense)": "37",
       "TDCJ_Number": "999533",
@@ -545,7 +545,7 @@
       "Date of Birth": "2/1/58",
       "Date Received": "9/2/98",
       "Age (when Received)": "40",
-      "Education Level (Highest Grade Completed)": "8 years",
+      "Education Level (Highest Grade Completed)": "8",
       "Date of Offense": "11/13/97",
       "Age (at the time of Offense)": "39",
       "TDCJ_Number": "999281",
@@ -576,7 +576,7 @@
       "Date of Birth": "11/12/1980",
       "Date Received": "11/10/2008",
       "Age (when Received)": "27",
-      "Education Level (Highest Grade Completed)": "12th Grade",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "03/17/2007",
       "Age (at the time of Offense)": "26",
       "TDCJ_Number": "999539",
@@ -656,7 +656,7 @@
       "Date of Birth": "09/15/1987",
       "Date Received": "03/16/2010",
       "Age (when Received)": "22",
-      "Education Level (Highest Grade Completed)": "10th grade",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "03/11/2009",
       "Age (at the time of Offense)": "21",
       "TDCJ_Number": "999555",
@@ -783,7 +783,7 @@
       "Date of Birth": "3/19/57",
       "Date Received": "8/29/97",
       "Age (when Received)": "40",
-      "Education Level (Highest Grade Completed)": "10 years",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "9/25/96",
       "Age (at the time of Offense)": "39",
       "TDCJ_Number": "999237",
@@ -887,7 +887,7 @@
   },
   {
     "Execution_Number": "513",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999367",
       "Date of Birth": "6/28/1964",
@@ -903,7 +903,7 @@
   },
   {
     "Execution_Number": "512",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999478",
       "Date of Birth": "10/16/1984",
@@ -935,7 +935,7 @@
   },
   {
     "Execution_Number": "510",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999329",
       "Date of Birth": "05/15/1954",
@@ -951,7 +951,7 @@
   },
   {
     "Execution_Number": "509",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/22/1967",
       "Date Received": "11/18/1994",
@@ -972,7 +972,7 @@
       "Date of Birth": "03/28/1970",
       "Date Received": "02/17/2009",
       "Age (when Received)": "38",
-      "Education Level (Highest Grade Completed)": "10th Grade",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "09/24/2007",
       "Age (at the time of Offense)": "37",
       "TDCJ_Number": "999552",
@@ -1252,7 +1252,7 @@
   },
   {
     "Execution_Number": "490",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999475",
       "Date of Birth": "02/28/1979",
@@ -1368,7 +1368,7 @@
       "Date of Birth": "11/6/78",
       "Date Received": "12/31/98",
       "Age (when Received)": "20",
-      "Education Level (Highest Grade Completed)": "10 years",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "3/26/98",
       "Age (at the time of Offense)": "19",
       "TDCJ_Number": "999292",
@@ -1632,7 +1632,7 @@
   },
   {
     "Execution_Number": "466",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999448",
       "Date of Birth": "08/22/1968",
@@ -1670,7 +1670,7 @@
       "Date of Birth": "12/10/58",
       "Date Received": "5/21/98",
       "Age (when Received)": "39",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "9/3/96",
       "Age (at the time of Offense)": "37",
       "TDCJ_Number": "999269",
@@ -1727,7 +1727,7 @@
   },
   {
     "Execution_Number": "460",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/13/1951",
       "Date Received": "10/06/1978",
@@ -1778,7 +1778,7 @@
       "Date of Birth": "5/29/72",
       "Date Received": "12/5/97",
       "Age (when Received)": "25",
-      "Education Level (Highest Grade Completed)": "8 years",
+      "Education Level (Highest Grade Completed)": "8",
       "Date of Offense": "10/10/93",
       "Age (at the time of Offense)": "21",
       "TDCJ_Number": "999245",
@@ -1820,7 +1820,7 @@
   },
   {
     "Execution_Number": "454",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999380",
       "Date of Birth": "12/11/1969",
@@ -1858,7 +1858,7 @@
       "Date of Birth": "8/6/75",
       "Date Received": "11/12/98",
       "Age (when Received)": "23",
-      "Education Level (Highest Grade Completed)": "10 years",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "1/2/98",
       "Age (at the time of Offense)": "23",
       "TDCJ_Number": "999286",
@@ -1915,13 +1915,13 @@
   },
   {
     "Execution_Number": "448",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999243",
       "Date of Birth": "9/7/58",
       "Date Received": "10/20/97",
       "Age (when Received)": "39",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "2/15/97",
       "Age (at the time of Offense)": "38",
       "TDCJ_Number": "999243",
@@ -1937,7 +1937,7 @@
       "Date of Birth": "10/11/65",
       "Date Received": "5/29/98",
       "Age (when Received)": "32",
-      "Education Level (Highest Grade Completed)": "7 years",
+      "Education Level (Highest Grade Completed)": "7",
       "Date of Offense": "4/30/97",
       "Age (at the time of Offense)": "31",
       "TDCJ_Number": "999270",
@@ -1953,7 +1953,7 @@
       "Date of Birth": "4/1/75",
       "Date Received": "8/10/98",
       "Age (when Received)": "23",
-      "Education Level (Highest Grade Completed)": "10 years",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "12/5/96",
       "Age (at the time of Offense)": "21",
       "TDCJ_Number": "999276",
@@ -2033,7 +2033,7 @@
       "Date of Birth": "12/28/71",
       "Date Received": "9/10/97",
       "Age (when Received)": "25",
-      "Education Level (Highest Grade Completed)": "11 years",
+      "Education Level (Highest Grade Completed)": "11",
       "Date of Offense": "12/14/95",
       "Age (at the time of Offense)": "23",
       "TDCJ_Number": "999239",
@@ -2111,7 +2111,7 @@
       "Date of Birth": "1/11/74",
       "Date Received": "7/16/98",
       "Age (when Received)": "24",
-      "Education Level (Highest Grade Completed)": "10 years",
+      "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "6/4/97",
       "Age (at the time of Offense)": "23",
       "TDCJ_Number": "999274",
@@ -2251,7 +2251,7 @@
       "Date of Birth": "12/12/67",
       "Date Received": "4/22/98",
       "Age (when Received)": "30",
-      "Education Level (Highest Grade Completed)": "11 years",
+      "Education Level (Highest Grade Completed)": "11",
       "Date of Offense": "10/1/96",
       "Age (at the time of Offense)": "28",
       "TDCJ_Number": "999265",
@@ -2298,7 +2298,7 @@
       "Date of Birth": "2/26/68",
       "Date Received": "01/29/98",
       "Age (when Received)": "30",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "11/30/95",
       "Age (at the time of Offense)": "27",
       "TDCJ_Number": "999212",
@@ -2314,7 +2314,7 @@
       "Date of Birth": "3/4/63",
       "Date Received": "4/6/00",
       "Age (when Received)": "37",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "5/7/99",
       "Age (at the time of Offense)": "36",
       "TDCJ_Number": "999353",
@@ -2386,7 +2386,7 @@
   },
   {
     "Execution_Number": "418",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/13/1961",
       "Date Received": "05/03/1996",
@@ -2543,7 +2543,7 @@
   },
   {
     "Execution_Number": "408",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/26/1967",
       "Date Received": "03/05/1993",
@@ -2605,7 +2605,7 @@
   },
   {
     "Execution_Number": "404",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999347",
       "Date of Birth": "07/18/1975",
@@ -2613,6 +2613,7 @@
       "Age (when Received)": "24",
       "Education Level (Highest Grade Completed)": "8",
       "Date of Offense": "05/18/1999",
+      "Age (at the time of Offense)": "23",
       "Age": "32",
       "TDCJ_Number": "999347",
       "Date_Executed": "09/20/2007"
@@ -2628,6 +2629,7 @@
       "Age (when Received)": "22",
       "Education Level (Highest Grade Completed)": "10",
       "Date of Offense": "06/08/1998",
+      "Age (at the time of Offense)": "21",
       "Age": "30",
       "TDCJ_Number": "999323",
       "Date_Executed": "09/05/2007"
@@ -2756,7 +2758,7 @@
   },
   {
     "Execution_Number": "394",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/11/1950",
       "Date Received": "01/08/1996",
@@ -2771,7 +2773,7 @@
   },
   {
     "Execution_Number": "393",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "02/24/1966",
       "Date Received": "11/01/1989",
@@ -2808,7 +2810,7 @@
       "Date of Birth": "5/13/68",
       "Date Received": "5/4/94",
       "Age (when Received)": "25",
-      "Education Level (Highest Grade Completed)": "9 years",
+      "Education Level (Highest Grade Completed)": "9",
       "Date of Offense": "6/7/93",
       "Age (at the time of Offense)": "25",
       "TDCJ_Number": "999095",
@@ -2893,7 +2895,7 @@
   },
   {
     "Execution_Number": "385",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "06/12/1962",
       "Date Received": "12/04/1982",
@@ -2930,7 +2932,7 @@
       "Date of Birth": "6/13/59",
       "Date Received": "6/17/98",
       "Age (when Received)": "39",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "4/8/97",
       "Age": "47",
       "TDCJ_Number": "999272",
@@ -2939,7 +2941,7 @@
   },
   {
     "Execution_Number": "382",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999496",
       "Date of Birth": "02/12/1975",
@@ -3014,7 +3016,7 @@
   },
   {
     "Execution_Number": "377",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/14/1958",
       "Date Received": "09/26/1991",
@@ -3050,7 +3052,7 @@
       "Date of Birth": "4/28/77",
       "Date Received": "10/9/98",
       "Age (when Received)": "21",
-      "Education Level (Highest Grade Completed)": "9 years",
+      "Education Level (Highest Grade Completed)": "9",
       "Date of Offense": "6/26/97",
       "Age": "29",
       "TDCJ_Number": "999284",
@@ -3065,7 +3067,7 @@
       "Date of Birth": "8/29/78",
       "Date Received": "4/29/98",
       "Age (when Received)": "19",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "4/21/97",
       "Age": "27",
       "TDCJ_Number": "999266",
@@ -3080,7 +3082,7 @@
       "Date of Birth": "11/17/61",
       "Date Received": "12/9/97",
       "Age (when shoulReceived)": "36",
-      "Education Level (Highest Grade Completed)": "5 years",
+      "Education Level (Highest Grade Completed)": "5",
       "Date of Offense": "5/10/94",
       "Age": "43",
       "TDCJ_Number": "999246",
@@ -3275,7 +3277,7 @@
       "Date of Birth": "8/15/74",
       "Date Received": "6/18/98",
       "Age (when Received)": "23",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "8/13/97",
       "Age": "31",
       "TDCJ_Number": "999273",
@@ -3329,7 +3331,7 @@
   },
   {
     "Execution_Number": "356",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "05/13/1972",
       "Date Received": "02/10/1995",
@@ -3412,6 +3414,7 @@
       "Age (when Received)": "35",
       "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "04/08/1998",
+      "Age (at the time of Offense)": "34",
       "Age": "42",
       "TDCJ_Number": "999309",
       "Date_Executed": "10/20/2005"
@@ -3434,7 +3437,7 @@
   },
   {
     "Execution_Number": "349",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/12/1965",
       "Date Received": "11/17/1988",
@@ -3449,7 +3452,7 @@
   },
   {
     "Execution_Number": "348",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/23/1975",
       "Date Received": "10/20/1995",
@@ -3689,7 +3692,7 @@
   },
   {
     "Execution_Number": "332",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/25/1952",
       "Date Received": "08/03/1992",
@@ -3860,7 +3863,7 @@
       "Date of Birth": "9/28/74",
       "Date Received": "2/4/98",
       "Age (when Received)": "23",
-      "Education Level (Highest Grade Completed)": "9 years",
+      "Education Level (Highest Grade Completed)": "9",
       "Date of Offense": "9/18/96",
       "Age (at the time of Offense)": "22",
       "TDCJ_Number": "999252",
@@ -3885,7 +3888,7 @@
   },
   {
     "Execution_Number": "319",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "02/23/1967",
       "Date Received": "06/01/1994",
@@ -3960,7 +3963,7 @@
   },
   {
     "Execution_Number": "314",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999387",
       "Date of Birth": "04/14/1976",
@@ -4005,7 +4008,7 @@
   },
   {
     "Execution_Number": "311",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/26/1962",
       "Date Received": "11/15/1994",
@@ -4065,13 +4068,13 @@
   },
   {
     "Execution_Number": "307",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999277",
       "Date of Birth": "8/2/59",
       "Date Received": "8/11/98",
       "Age (when Received)": "39",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "2/7/98",
       "Age (at the time of Offense)": "38",
       "TDCJ_Number": "999277",
@@ -4126,7 +4129,7 @@
   },
   {
     "Execution_Number": "303",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/11/1954",
       "Date Received": "05/20/1992",
@@ -4177,7 +4180,7 @@
       "Date of Birth": "2/18/68",
       "Date Received": "9/10/97",
       "Age (when Received)": "29",
-      "Education Level (Highest Grade Completed)": "12 years",
+      "Education Level (Highest Grade Completed)": "12",
       "Date of Offense": "1/4/94",
       "Age (at the time of Offense)": "25",
       "TDCJ_Number": "999238",
@@ -4232,7 +4235,7 @@
   },
   {
     "Execution_Number": "296",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/25/1960",
       "Date Received": "01/20/1987",
@@ -4307,13 +4310,13 @@
   },
   {
     "Execution_Number": "291",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "999257",
       "Date of Birth": "5/9/72",
       "Date Received": "3/13/98",
       "Age (when Received)": "25",
-      "Education Level (Highest Grade Completed)": "9 years",
+      "Education Level (Highest Grade Completed)": "9",
       "Date of Offense": "9/27/97",
       "Age (at the time of Offense)": "25",
       "TDCJ_Number": "999257",
@@ -4353,7 +4356,7 @@
   },
   {
     "Execution_Number": "288",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "06/16/1950",
       "Date Received": "06/07/1996",
@@ -4458,7 +4461,7 @@
   },
   {
     "Execution_Number": "281",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "02/23/1958",
       "Date Received": "06/14/1990",
@@ -4593,7 +4596,7 @@
   },
   {
     "Execution_Number": "272",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/15/1975",
       "Date Received": "03/21/1997",
@@ -4698,7 +4701,7 @@
   },
   {
     "Execution_Number": "265",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/15/1955",
       "Date Received": "11/15/1991",
@@ -4893,7 +4896,7 @@
   },
   {
     "Execution_Number": "252",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/12/1951",
       "Date Received": "03/11/1986",
@@ -5043,7 +5046,7 @@
   },
   {
     "Execution_Number": "242",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/07/1948",
       "Date Received": "02/15/1982",
@@ -5253,7 +5256,7 @@
   },
   {
     "Execution_Number": "228",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/29/1946",
       "Date Received": "02/29/1980",
@@ -5523,7 +5526,7 @@
   },
   {
     "Execution_Number": "210",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/15/1971",
       "Date Received": "11/12/1991",
@@ -5553,7 +5556,7 @@
   },
   {
     "Execution_Number": "208",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/12/1937",
       "Date Received": "10/14/1985",
@@ -5598,7 +5601,7 @@
   },
   {
     "Execution_Number": "205",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/11/1973",
       "Date Received": "08/03/1992",
@@ -5628,7 +5631,7 @@
   },
   {
     "Execution_Number": "203",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/12/1957",
       "Date Received": "09/09/1983",
@@ -5778,7 +5781,7 @@
   },
   {
     "Execution_Number": "193",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/04/1971",
       "Date Received": "08/22/1995",
@@ -5808,7 +5811,7 @@
   },
   {
     "Execution_Number": "191",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/21/1948",
       "Date Received": "07/15/1987",
@@ -5838,7 +5841,7 @@
   },
   {
     "Execution_Number": "189",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/12/1956",
       "Date Received": "09/02/1994",
@@ -5883,7 +5886,7 @@
   },
   {
     "Execution_Number": "186",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/01/1960",
       "Date Received": "12/20/1989",
@@ -5898,7 +5901,7 @@
   },
   {
     "Execution_Number": "185",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/25/1962",
       "Date Received": "07/10/1984",
@@ -5913,7 +5916,7 @@
   },
   {
     "Execution_Number": "184",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/29/1943",
       "Date Received": "05/27/1988",
@@ -5928,7 +5931,7 @@
   },
   {
     "Execution_Number": "183",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/03/1959",
       "Date Received": "12/19/1980",
@@ -5958,7 +5961,7 @@
   },
   {
     "Execution_Number": "181",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "11/21/1957",
       "Date Received": "12/07/1987",
@@ -6003,7 +6006,7 @@
   },
   {
     "Execution_Number": "178",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/19/1937",
       "Date Received": "12/09/1977",
@@ -6018,7 +6021,7 @@
   },
   {
     "Execution_Number": "177",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/25/1960",
       "Date Received": "04/15/1985",
@@ -6033,7 +6036,7 @@
   },
   {
     "Execution_Number": "176",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/01/1936",
       "Date Received": "03/01/1990",
@@ -6048,7 +6051,7 @@
   },
   {
     "Execution_Number": "175",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/26/1968",
       "Date Received": "06/16/1988",
@@ -6078,7 +6081,7 @@
   },
   {
     "Execution_Number": "173",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/14/1938",
       "Date Received": "8/26/1974",
@@ -6108,7 +6111,7 @@
   },
   {
     "Execution_Number": "171",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "11/07/1960",
       "Date Received": "09/27/1985",
@@ -6123,7 +6126,7 @@
   },
   {
     "Execution_Number": "170",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/05/1967",
       "Date Received": "06/04/1991",
@@ -6348,7 +6351,7 @@
   },
   {
     "Execution_Number": "155",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/13/1968",
       "Date Received": "11/22/1988",
@@ -6439,7 +6442,7 @@
   },
   {
     "Execution_Number": "149",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/08/1955",
       "Date Received": "09/15/1986",
@@ -6649,7 +6652,7 @@
   },
   {
     "Execution_Number": "135",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "06/03/1952",
       "Date Received": "04/25/1996",
@@ -6889,7 +6892,7 @@
   },
   {
     "Execution_Number": "119",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/11/1957",
       "Date Received": "10/16/1986",
@@ -6934,7 +6937,7 @@
   },
   {
     "Execution_Number": "116",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/12/1963",
       "Date Received": "11/13/1987",
@@ -6949,7 +6952,7 @@
   },
   {
     "Execution_Number": "115",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/27/1942",
       "Date Received": "12/10/1986",
@@ -6964,7 +6967,7 @@
   },
   {
     "Execution_Number": "114",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/22/1943",
       "Date Received": "12/05/1986",
@@ -6994,7 +6997,7 @@
   },
   {
     "Execution_Number": "112",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/20/1946",
       "Date Received": "07/30/1976",
@@ -7084,7 +7087,7 @@
   },
   {
     "Execution_Number": "106",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/04/1950",
       "Date Received": "11/21/1975",
@@ -7099,7 +7102,7 @@
   },
   {
     "Execution_Number": "105",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/12/1957",
       "Date Received": "03/01/1990",
@@ -7114,7 +7117,7 @@
   },
   {
     "Execution_Number": "104",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/07/1955",
       "Date Received": "04/15/1982",
@@ -7129,7 +7132,7 @@
   },
   {
     "Execution_Number": "103",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/19/1963",
       "Date Received": "03/25/1987",
@@ -7159,7 +7162,7 @@
   },
   {
     "Execution_Number": "101",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/22/1961",
       "Date Received": "12/15/1988",
@@ -7174,7 +7177,7 @@
   },
   {
     "Execution_Number": "100",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/30/1945",
       "Date Received": "07/08/1983",
@@ -7219,7 +7222,7 @@
   },
   {
     "Execution_Number": "97",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/04/1964",
       "Date Received": "04/07/1987",
@@ -7249,7 +7252,7 @@
   },
   {
     "Execution_Number": "95",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/27/1960",
       "Date Received": "02/20/1986",
@@ -7279,7 +7282,7 @@
   },
   {
     "Execution_Number": "93",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/15/1953",
       "Date Received": "11/07/1980",
@@ -7294,7 +7297,7 @@
   },
   {
     "Execution_Number": "92",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/01/1943",
       "Date Received": "04/08/1978",
@@ -7533,7 +7536,7 @@
   },
   {
     "Execution_Number": "76",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/22/1947",
       "Date Received": "08/16/1978",
@@ -7548,7 +7551,7 @@
   },
   {
     "Execution_Number": "75",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/30/1952",
       "Date Received": "03/25/1983",
@@ -7563,7 +7566,7 @@
   },
   {
     "Execution_Number": "74",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/09/1955",
       "Date Received": "10/18/1988",
@@ -7638,7 +7641,7 @@
   },
   {
     "Execution_Number": "69",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "02/06/1960",
       "Date Received": "11/25/1981",
@@ -7653,7 +7656,7 @@
   },
   {
     "Execution_Number": "68",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/30/1954",
       "Date Received": "07/29/1986",
@@ -7683,13 +7686,13 @@
   },
   {
     "Execution_Number": "66",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "804",
       "Date of Birth": "12/5/66",
       "Date Received": "9/10/85",
       "Age (when Received)": "18",
-      "Education Level (Highest Grade Completed)": "9 years",
+      "Education Level (Highest Grade Completed)": "9",
       "Date of Offense": "11/8/84",
       "Age (at the time of Offense)": "17",
       "TDCJ_Number": "804",
@@ -7714,7 +7717,7 @@
   },
   {
     "Execution_Number": "64",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/07/1935",
       "Date Received": "02/26/1986",
@@ -7729,7 +7732,7 @@
   },
   {
     "Execution_Number": "63",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/31/1954",
       "Date Received": "11/20/1981",
@@ -7759,7 +7762,7 @@
   },
   {
     "Execution_Number": "61",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "08/31/19621",
       "Date Received": "06/07/1979",
@@ -7789,7 +7792,7 @@
   },
   {
     "Execution_Number": "59",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "07/30/1955",
       "Date Received": "06/21/1983",
@@ -7819,7 +7822,7 @@
   },
   {
     "Execution_Number": "57",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "04/02/1955",
       "Date Received": "08/20/1980",
@@ -7834,7 +7837,7 @@
   },
   {
     "Execution_Number": "56",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/15/1954",
       "Date Received": "05/19/1983",
@@ -7849,7 +7852,7 @@
   },
   {
     "Execution_Number": "55",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/10/1952",
       "Date Received": "11/09/1981",
@@ -7864,7 +7867,7 @@
   },
   {
     "Execution_Number": "54",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -7879,7 +7882,7 @@
   },
   {
     "Execution_Number": "53",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -7894,7 +7897,7 @@
   },
   {
     "Execution_Number": "52",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "05/20/1955",
       "Date Received": "08/03/1977",
@@ -7909,7 +7912,7 @@
   },
   {
     "Execution_Number": "51",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -7969,7 +7972,7 @@
   },
   {
     "Execution_Number": "47",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/13/1957",
       "Date Received": "02/24/1978",
@@ -8014,7 +8017,7 @@
   },
   {
     "Execution_Number": "44",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/24/1963",
       "Date Received": "12/15/1982",
@@ -8029,7 +8032,7 @@
   },
   {
     "Execution_Number": "43",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8134,7 +8137,7 @@
   },
   {
     "Execution_Number": "36",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "10/19/1952",
       "Date Received": "04/05/1984",
@@ -8209,7 +8212,7 @@
   },
   {
     "Execution_Number": "31",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "12/17/1948",
       "Date Received": "08/02/1984",
@@ -8239,7 +8242,7 @@
   },
   {
     "Execution_Number": "29",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "05/14/1949",
       "Date Received": "05/24/1983",
@@ -8254,7 +8257,7 @@
   },
   {
     "Execution_Number": "28",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8269,7 +8272,7 @@
   },
   {
     "Execution_Number": "27",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8284,7 +8287,7 @@
   },
   {
     "Execution_Number": "26",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8299,7 +8302,7 @@
   },
   {
     "Execution_Number": "25",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "01/27/1955",
       "Date Received": "09/25/1978",
@@ -8314,7 +8317,7 @@
   },
   {
     "Execution_Number": "24",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8344,7 +8347,7 @@
   },
   {
     "Execution_Number": "22",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/27/1959",
       "Date Received": "02/14/1984",
@@ -8359,7 +8362,7 @@
   },
   {
     "Execution_Number": "21",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "667",
       "Date of Birth": "03/02/1942",
@@ -8375,7 +8378,7 @@
   },
   {
     "Execution_Number": "20",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "",
       "Date Received": "",
@@ -8494,7 +8497,7 @@
   },
   {
     "Execution_Number": "12",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "03/01/1958",
       "Date Received": "06/17/1982",
@@ -8569,7 +8572,7 @@
   },
   {
     "Execution_Number": "7",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "Date of Birth": "09/22/1960",
       "Date Received": "05/18/1982",
@@ -8644,7 +8647,7 @@
   },
   {
     "Execution_Number": "2",
-    "Last Statement": "X",
+    "Last Statement": "Declined.",
     "info": {
       "TDCJ Number": "670",
       "Date of Birth": "9/27/1954",
