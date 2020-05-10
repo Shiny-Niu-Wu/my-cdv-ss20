@@ -87,32 +87,12 @@ section2.append("image")
   .attr("y", h/6)
 ;
 
-let matchedWordsGroup = section2.append("g")
-  .attr("class", "matchedWordsGroup")
-  .attr("transform", "translate(0, 0)")
-;
-
-//matched first words placholder
-matchedWordsGroup.append("text")
-  .text("[matched first words]")
-  .attr("x", w/6)
-  .attr("y", 100)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
-matchedWordsGroup.append("text")
-  .text("[matched first words]")
-  .attr("x", (w*4)/5)
-  .attr("y", h/8)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
-;
-matchedWordsGroup.append("text")
-  .text("[matched first words]")
-  .attr("x", w/2)
-  .attr("y", h/14)
-  .style("text-anchor", "middle")
-  .style("fill", "white")
+let emptyDiv = section2.append("rect")
+  .attr("class", "emptyDiv")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", w)
+  .attr("height", h/6)
 ;
 
 let navigationGroup = section2
@@ -141,55 +121,10 @@ d3.selectAll('.brush>.handle').remove();
 // removes crosshair cursor
 d3.selectAll('.brush>.overlay').remove();
 
-//bed image placeholder
-// section2.append("text")
-//   .text("[insert a bed changing its shape]")
-//   .attr("x", w/2)
-//   .attr("y", h/4)
-//   .style("text-anchor", "middle")
-//   .style("fill", "white")
-// ;
 
 d3.csv("first-words.csv").then(function(gotData){
-  // I want to get the avg frequency
-  // gotData.forEach((d, i) => {
-  //   gotData[i].avg = (d.fre16 + d.fre17 + d.fre18 + d.fre19 + d.fre20 + d.fre21 + d.fre22 + d.fre23 + d.fre24 + d.fre25 + d.fre26 + d.fre27 + d.fre28 + d.fre29 + d.fre30)/15;
-  // });
-  // console.log(gotData[2].fre24);
-
   d3.json("last-words.json").then(function(incomingData){
     console.log("data loaded");
-
-//!!!!!!!!!!!!!!check the matched words!!!!!!!!!!!!!!!
-
-    // var string = "hi, I need support for apple, android and nokia phones.";
-    // var keywords = ['apple', 'nokia', 'android'];
-    // var results = [];
-    // for(var i = 0; i < keywords.length; i++) {
-    //     if ((new RegExp("\\b" + keywords[i] + "\\b", "i").test(string)) {
-    //         results.push(keywords[i]);
-    //     }
-    // }
-    // alert( "contains: " + results );
-
-// first turn all first words into an array
-    let firstWords = gotData.map(d=>d.definition);
-    // console.log(firstWords);
-    //also turn the last statements into an array
-    let lastSentences = incomingData.map(d=>d['Last Statement']);
-    // console.log(lastSentences);
-
-//match first words and last words
-    // lastSentences.forEach((item, id) => {
-    //   for(i = 0; i < firstWords.length; i++){
-    //     var match = item.match(firstWords[i]);
-    //     // console.log(match);
-    //   }
-    // });
-
-//enter() all matchedWords as texts
-
-
 
     xScale.domain([0, incomingData.length-1]);
     brush.on("end", brushEnd);
@@ -232,7 +167,17 @@ d3.csv("first-words.csv").then(function(gotData){
       .attr("y", (h/6)-10)
       .attr("fill", "white")
       .style("text-anchor", "middle")
+      .style("font-size", 24)
+      .style("font-weight", "bold")
     ;
+
+     // function currentNumberAnchor(d, i){
+     //   if (Number(selectedData.Execution_Number) >= 550) {
+     //     return "start"
+     //   } else {
+     //     return "middle"
+     //   }
+     // }
 
     let currentNumber = section2.append("text")
       .text("Executed #" + selectedData.Execution_Number)
@@ -244,12 +189,13 @@ d3.csv("first-words.csv").then(function(gotData){
     ;
 
     let fullStatment = section3.append("text")
-      .text(incomingData[selectionIndex]['Last Statement'])
+      .text(selectedData["Last Statement"])
       .attr("id", "full_statement")
       .attr("x", w/2)
       .attr("y", h/14)
       .style("text-anchor", "middle")
-      .style("fill", "white")
+      .style("fill", "black")
+      .style("font-family", 'Caladea')
       .call(wrap, w*0.85);
     ;
 
@@ -261,7 +207,7 @@ d3.csv("first-words.csv").then(function(gotData){
         .attr("y", h/6 + 30)
         .style("text-anchor", "middle")
         .style("fill", "white")
-        .style("font-size", 12)
+        .style("font-size", 10)
         .call(wrap, w*0.95);
     ;
 
@@ -290,6 +236,10 @@ d3.csv("first-words.csv").then(function(gotData){
       return educationWidth + 10
     }
 
+    function getTDCJWidth(){
+      return getEducationWidth() - 20
+    }
+
     function getOffenceAgeWidth(){
       let offenceAge;
       if (selectedData.info['Age (at the time of Offense)'] && selectedData.info['Age (at the time of Offense)'] != "") {
@@ -303,15 +253,7 @@ d3.csv("first-words.csv").then(function(gotData){
     }
 
     function getOffenceDateWidth(){
-      let offenceAge;
-      if (selectedData.info['Age (at the time of Offense)'] && selectedData.info['Age (at the time of Offense)'] != "") {
-        offenceAge = Number(selectedData.info['Age (at the time of Offense)']);
-      } else {
-        offenceAge = 1;
-      }
-      let offenceAgeWidth = getEducationWidth() + offenceAge*3;
-
-      return offenceAgeWidth + 100
+      return getOffenceAgeWidth() + 120
     }
 
     function drawBed(){
@@ -379,6 +321,14 @@ d3.csv("first-words.csv").then(function(gotData){
       .style("fill", "white")
     ;
 
+    let tdcjText = bedGroup.append("text")
+      .text(selectedData.info.TDCJ_Number)
+      .attr("x", getTDCJWidth)
+      .attr("y", h/6 + 20)
+      .style("text-anchor", "end")
+      .style("fill", "white")
+    ;
+
     let offenceAgeText = bedGroup.append("text")
       .text(selectedData.info['Age (at the time of Offense)'])
       .attr("x", getOffenceAgeWidth)
@@ -428,8 +378,134 @@ d3.csv("first-words.csv").then(function(gotData){
       .attr("height", h/6 - h/12)
     ;
 
-    // update
-    //this is whenever a selection is done
+    function showMatchedWords(d, i){
+      function getRandomYPos(d, i){
+        return Math.random() * ((h/6 - 30)-80) + 80
+      }
+
+      function fallingRandomYPos(d, i){
+        return Math.random() * ((h/3 - 30) - (h/6 + 30)) + (h/6 + 30)
+      }
+
+      let wordsXScale = d3.scaleLinear().range([w*0.1, w*0.9]);
+
+      function getGroupLocation(d, i){
+        let x = wordsXScale(i);
+        let y = getRandomYPos();
+        return "translate("+x+", "+y+")"
+      }
+
+      function fallingGroupLocation(d, i){
+        let x = wordsXScale(i);
+        let y = fallingRandomYPos();
+        return "translate("+x+", "+y+")"
+      }
+
+      function getIncomingGroupLocation(d, i){
+        let x = w/2;
+        let y = 50;
+        return "translate("+x+", "+y+")"
+      }
+
+      function getExitingGroupLocation(d, i){
+        let x = w/2;
+        let y = h/3;
+        return "translate("+x+", "+y+")"
+      }
+
+      function assignKeys(d, i){
+        return d.word
+      }
+
+  //check the matched words
+      // first turn all first words into an array
+      let firstWords = gotData.map(d=>d.definition);
+      let firstWordsFreq = gotData.map(d=>(Number(d.fre16) + Number(d.fre17) + Number(d.fre18) + Number(d.fre19) + Number(d.fre20) + Number(d.fre21) + Number(d.fre22) + Number(d.fre23) + Number(d.fre24) + Number(d.fre25) + Number(d.fre26) + Number(d.fre27) + Number(d.fre28) + Number(d.fre29) + Number(d.fre30))/15);
+      // console.log(firstWordsFreq);
+      let minFreq = d3.min(firstWordsFreq, (d, i) => d);
+      let maxFreq = d3.max(firstWordsFreq, (d, i) => d);
+      let freqScale = d3.scaleLinear().domain([minFreq, maxFreq]).range([14, 32]);
+      // console.log(firstWords);
+      let selectedStatement = selectedData['Last Statement'];
+
+      let matchedWords = [];
+      //then check if first words are in selected last statement
+      for (var i = 0; i < firstWords.length; i++) {
+        if (new RegExp("\\b" + firstWords[i] + "\\b", "i").test(selectedStatement)) {
+          matchedWords.push({  word: firstWords[i], freq: freqScale(firstWordsFreq[i])  });
+        }
+      }
+      // console.log(selectedData.Execution_Number + " contain: " + matchedWords);
+
+      // let noMatchText = section2.append("text")
+      //   .text("X")
+      //   .attr("x", w/2 - 50)
+      //   .attr("y", h/12)
+      //   .style("text-anchor", "middle")
+      //   .style("fill", "white")
+      //   .style("font-size", 60)
+      //   .style("display", "none")
+      // ;
+      //
+      // if (matchedWords.length === 0) {
+      //   noMatchText.style("display", "block");
+      // } else {
+      //   noMatchText.style("display", "none");
+      // }
+
+      wordsXScale.domain([0, matchedWords.length-1]);
+
+      //enter() all matchedWords as texts
+      let matchedWordsGroups = section2.selectAll(".wordGroup").data(matchedWords, assignKeys);
+
+      //ENTERING words
+      let enteringWords = matchedWordsGroups.enter()
+        .append("g")
+          .attr("class", "wordGroup")
+      ;
+
+      let enteringWord = enteringWords.append("text")
+        .text((d, i) => d.word)
+        .attr("x", 10)
+        .attr("y", 10)
+        .style("font-size", (d, i) => d.freq)
+        // .attr("fill", "white")
+        // .call(wrap, 20)
+      ;
+
+      enteringWords.attr("transform", getIncomingGroupLocation)
+        .transition().delay(500).duration(3000).attr("transform", getGroupLocation)
+        .transition().delay(500).duration(15000).attr("transform", fallingGroupLocation)
+      ;
+      enteringWord.attr("fill", "white")
+        .transition().delay(500).duration(3000).attr("fill", "white")
+        .transition().delay(500).duration(15000).attr("fill", "black")
+      ;
+
+      //EXITING words
+      let exitingWords = matchedWordsGroups.exit();
+      exitingWords.transition().duration(1000).attr("transform", getExitingGroupLocation).remove();
+
+      //UPDATING words
+      matchedWordsGroups.select("text")
+        .text((d, i) => d.word)
+        .attr("fill", "white")
+        .style("font-size", (d, i) => d.freq)
+        .transition().delay(500).duration(3000).attr("fill", "white")
+        .transition().delay(500).duration(15000).attr("fill", "black")
+      ;
+      matchedWordsGroups
+        .transition().duration(500).attr("transform", getGroupLocation)
+        .transition().delay(500).duration(15000).attr("transform", fallingGroupLocation)
+      ;
+
+    }
+
+    showMatchedWords();
+
+
+// update
+    //this is whenever a brush selection is done
     function brushMove(){
       let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
       selectionIndex = Math.round(leftEdgeOfBrush);
@@ -444,6 +520,7 @@ d3.csv("first-words.csv").then(function(gotData){
         return i == selectionIndex;
       })//.select("rect").attr("fill", "white")
       brushMoveIndicator.attr("x", xScale(selectionIndex));
+      currentNumber.text("Executed #" + incomingData[selectionIndex].Execution_Number).attr("x", xScale(selectionIndex) - 1).call(wrap, 40);
       getSelectedData();
       console.log("selction:", selectedData.Execution_Number);
       bedPath.data(drawBed).attr("d", bedArea(drawBed())).transition();
@@ -454,7 +531,9 @@ d3.csv("first-words.csv").then(function(gotData){
       receiveDateText.text(selectedData.info['Date Received']).attr("x", getOffenceDateWidth);
       executionDateText.text(selectedData.info['Date_Executed']).attr("x", getAgeWidth);
       birthDateText.text(selectedData.info['Date of Birth']);
+      tdcjText.text(selectedData.info.TDCJ_Number).attr("x", getTDCJWidth);
       fullStatment.text(selectedData['Last Statement']).call(wrap, w*0.85);
+      showMatchedWords();
     }
 
     //wrapping text

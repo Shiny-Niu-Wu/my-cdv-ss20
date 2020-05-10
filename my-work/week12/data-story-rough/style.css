@@ -68,11 +68,13 @@ body{
 .downArrow:hover{
   color: white;
   cursor: pointer;
+  font-size: 51px;
 }
 
 .upArrow:hover{
   color: white;
   cursor: pointer;
+  font-size: 51px;
 }
 
 #section_link2_1{
