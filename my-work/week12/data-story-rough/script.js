@@ -12,7 +12,7 @@ let viz = d3.select("#container").append("svg")
 
 let section1 = viz.append("g")
   .attr("class", "section_div")
-  .attr("id", "sec1")
+  .attr("id", "one")
   .attr("transform", "translate(0, 0)")
 ;
 
@@ -48,7 +48,7 @@ section1.append("text")
 
 let section3 = viz.append("g")
   .attr("class", "section_div")
-  .attr("id", "sec3")
+  .attr("id", "three")
   .attr("transform", "translate(0, " + (h/3)*2 + ")")
 ;
 
@@ -81,7 +81,7 @@ section3.append("text")
 
 let section2 = viz.append("g")
   .attr("class", "section_div")
-  .attr("id", "sec2")
+  .attr("id", "two")
   .attr("transform", "translate(0, " + h/3 + ")")
 ;
 
@@ -609,10 +609,10 @@ let secondToThird = document.getElementById("section_link2_3");
 let secondToFirst = document.getElementById("section_link2_1");
 let thirdToSecond = document.getElementById("section_link3_2");
 
-firstToSecond.href = "#sec2";
-secondToThird.href = "#sec3";
-thirdToSecond.href = "#sec2";
-secondToFirst.href = "#sec1";
+firstToSecond.href = "#two";
+secondToThird.href = "#three";
+thirdToSecond.href = "#two";
+secondToFirst.href = "#one";
 
 let description1 = document.getElementById("description1");
 let description2_1 = document.getElementById("description2_1");
