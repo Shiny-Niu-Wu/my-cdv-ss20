@@ -24,12 +24,178 @@ body{
   letter-spacing: 0.4em;
 }
 
-/* .brushGraphGroup .brushInterXGroup .brush{
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0vh;
-  z-index: 5;
-} */
+#infoButton{
+  font-size: 50px;
+  color: #4F726C;
+  background-color: transparent;
+  border: transparent;
+  position: fixed;
+  bottom: 3vh;
+  right: 5.4vw;
+  display: none;
+  outline: none;
+  text-decoration: none;
+}
+
+#infoButton:hover{
+  cursor: pointer;
+  color: white;
+  font-size: 51px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: black;
+  color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #4F726C;
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 51px;
+}
+
+.description{
+  color: white;
+  background-color: #4F726C;
+  padding: 1.6em;
+  opacity: 90%;
+  line-height: 1.2em;
+}
+
+@keyframes aniDescription1 {
+  from {
+    opacity: 0;
+    top: 75vh;
+  }
+  to {
+    opacity: 90%;
+    top: 60vh;
+  }
+}
+
+#description1{
+  position: absolute;
+  top: 60vh;
+  left: 87vw;
+  display: none;
+}
+
+@keyframes aniDescription2_1 {
+  from {
+    opacity: 0;
+    top: 0vh;
+  }
+  to {
+    opacity: 90%;
+    top: 25vh;
+  }
+}
+
+#description2_1{
+  position: fixed;
+  top: 25vh;
+  left: 84vw;
+  display: none;
+}
+
+@keyframes aniDescription2_2 {
+  0% {opacity: 0;}
+  70% {opacity: 0;}
+  100% {opacity: 90%;}
+}
+
+#description2_2{
+  position: fixed;
+  top: 55vh;
+  left: 84vw;
+  display: none;
+}
+
+@keyframes aniDescription3_1 {
+  0% {opacity: 0;}
+  80% {opacity: 0;}
+  100% {opacity: 90%;}
+}
+
+#description3_1{
+  position: fixed;
+  top: 0;
+  left: 89.8vw;
+  display: none;
+}
+
+@keyframes aniDescription3_2 {
+  0% {opacity: 0;}
+  99% {opacity: 0;}
+  100% {opacity: 90%;}
+}
+
+#description3_2{
+  position: fixed;
+  top: 20vh;
+  left: 91vw;
+  display: none;
+}
+
+@keyframes aniDescription3_3 {
+  0% {
+    opacity: 0;
+    top: 50vh;
+  }
+  70% {
+    opacity: 0;
+    top: 50vh;
+  }
+  100% {
+    opacity: 90%;
+    top: 40vh;
+  }
+}
+
+#description3_3{
+  position: fixed;
+  top: 40vh;
+  left: 84vw;
+  display: none;
+}
+
+#description3_4{
+  position: fixed;
+  top: 43vh;
+  left: 35vw;
+  display: none;
+  text-align: center;
+}
 
 .brush .selection{
   fill: black;

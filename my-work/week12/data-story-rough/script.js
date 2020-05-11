@@ -60,7 +60,7 @@ section3.append("text")
   .text("created by")
   .attr("id", "text_created")
   .attr("x", w/2)
-  .attr("y", "90vh")
+  .attr("y", "92vh")
   .style("text-anchor", "middle")
   .style("fill", "white")
 ;
@@ -165,9 +165,9 @@ d3.csv("first-words.csv").then(function(gotData){
       .text("↔")
       .attr("x", xScale(selectionIndex) - 1)
       .attr("y", (h/6)-10)
-      .attr("fill", "white")
+      .attr("fill", "#aaaaaa")
       .style("text-anchor", "middle")
-      .style("font-size", 24)
+      .style("font-size", 50)
       .style("font-weight", "bold")
     ;
 
@@ -207,7 +207,7 @@ d3.csv("first-words.csv").then(function(gotData){
         .attr("y", h/6 + 30)
         .style("text-anchor", "middle")
         .style("fill", "white")
-        .style("font-size", 10)
+        .style("font-size", 8)
         .call(wrap, w*0.95);
     ;
 
@@ -505,13 +505,14 @@ d3.csv("first-words.csv").then(function(gotData){
 
 
 // update
-    //this is whenever a brush selection is done
+    //this is whenever the brush is moving
     function brushMove(){
       let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
       selectionIndex = Math.round(leftEdgeOfBrush);
       brushMoveIndicator.attr("x", xScale(selectionIndex));
       currentNumber.text("Executed #" + incomingData[selectionIndex].Execution_Number).attr("x", xScale(selectionIndex) - 1).call(wrap, 40);
     }
+    //this is whenever a brush selection is done
     function brushEnd(){
       let leftEdgeOfBrush = (d3.event.selection.map(xScale.invert)[0] + d3.event.selection.map(xScale.invert)[1])/2;
       selectionIndex = Math.round(leftEdgeOfBrush);
@@ -575,9 +576,9 @@ d3.csv("first-words.csv").then(function(gotData){
   });
 });
 
-//maybe combine the two data files
-
-
+//clicking the navigation arrows
+  //navigate through page sections
+  //and display description texts
 let firstToSecond = document.getElementById("section_link1_2");
 let secondToThird = document.getElementById("section_link2_3");
 let secondToFirst = document.getElementById("section_link2_1");
@@ -588,26 +589,105 @@ secondToThird.href = "#sec3";
 thirdToSecond.href = "#sec2";
 secondToFirst.href = "#sec1";
 
+let description1 = document.getElementById("description1");
+let description2_1 = document.getElementById("description2_1");
+let description2_2 = document.getElementById("description2_2");
+let text2_2 = document.getElementById("text2_2");
+let description3_1 = document.getElementById("description3_1");
+let description3_2 = document.getElementById("description3_2");
+let description3_3 = document.getElementById("description3_3");
+let description3_4 = document.getElementById("description3_4");
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("infoButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
 function go1to2(){
   firstToSecond.style.display = "none";
   secondToThird.style.display = "block";
   secondToFirst.style.display = "block";
+  description1.style.display = "none";
+  description2_1.style.display = "block";
+  description2_1.style.animation = "aniDescription2_1 3s";
+  description2_2.style.display = "block";
+  description2_2.style.animation = "aniDescription2_2 12s";
 }
 
 function go2to3(){
   secondToThird.style.display = "none";
   secondToFirst.style.display = "none";
   thirdToSecond.style.display = "block";
+  description2_1.style.display = "none";
+  description2_2.style.display = "none";
+  description3_1.style.display = "block";
+  description3_1.style.animation = "aniDescription3_1 1s";
+  description3_2.style.display = "block";
+  description3_2.style.animation = "aniDescription3_2 6s";
+  description3_3.style.display = "block";
+  description3_3.style.animation = "aniDescription3_3 10s";
+  btn.style.display = "block";
 }
 
 function go3to2(){
   thirdToSecond.style.display = "none";
   secondToThird.style.display = "block"
   secondToFirst.style.display = "block";
+  description3_1.style.display = "none";
+  description3_2.style.display = "none";
+  description3_3.style.display = "none";
+  description3_4.style.display = "none";
+  description2_1.style.display = "block";
+  description2_1.style.animation = "aniDescription2_1 3s";
+  description2_2.style.display = "block";
+  description2_2.style.animation = "aniDescription2_2 12s";
 }
 
 function go2to1(){
   secondToFirst.style.display = "none";
   secondToThird.style.display = "none";
   firstToSecond.style.display = "block";
+  description2_1.style.display = "none";
+  description2_2.style.display = "none";
+}
+
+
+function showDescription1(){
+  description1.style.display = "block";
+  description1.style.animation = "aniDescription1 1s";
+}
+
+function changeDescription2_2(){
+  text2_2.innerHTML = "to the very<br>last words one may speak <br>on a bed"
+  description2_2.style.left = "84.3vw";
+}
+
+function originalDescription2_2(){
+  text2_2.innerHTML = "across the time<br>indicators that seeminly define life"
+  description2_2.style.left = "84vw";
+}
+
+function showDescription3_4(){
+  description3_4.style.display = "block";
+}
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
