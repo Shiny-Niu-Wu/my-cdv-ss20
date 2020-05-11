@@ -15,35 +15,35 @@
 
     </div>
 
-    <img src="images/microphone.png" alt="mic" id="img_mic">
+    <img src="images/microphone.png" alt="mic" id="img_mic" class="disableSelection">
 
     <div class="description" id="description1">
-      <p>in one's life, or of many lives</p>
+      <p class="description-text">in one's life, or of many lives</p>
     </div>
 
     <div class="description" id="description2_1">
-      <p>from the very<br>first words one may speak<br>as an infant</p>
+      <p class="description-text">from the very<br>first words one may speak<br>as an infant</p>
     </div>
 
     <div class="description" id="description2_2">
-      <p id="text2_2">across the time<br>indicators that seeminly define life</p>
+      <p class="description-text" id="text2_2">across the time<br>indicators that seeminly define life</p>
     </div>
 
     <div class="description" id="description3_1">
-      <p>execution bed</p>
+      <p class="description-text">execution bed</p>
     </div>
 
     <div class="description" id="description3_2">
-      <p>can we judge</p>
+      <p class="description-text">can we judge</p>
     </div>
 
     <div class="description" id="description3_3">
-      <p>what words are heard and<br> what words are resolved</p>
+      <p class="description-text">what words are heard and<br> what words are resolved</p>
     </div>
 
     <div class="description" id="description3_4">
-      <p>at the end of the day no one survives and no one revives</p>
-      <p>a blessing to whom?</p>
+      <p class="description-text">at the end of the day no one survives and no one revives</p>
+      <p class="description-text">a blessing to whom?</p>
     </div>
 
     <button type="button" name="button" id="infoButton">i</button>
@@ -53,23 +53,26 @@
       <div class="modal-content">
         <div class="modal-container">
           <span class="close">&times;</span>
-          <p>Two sets of data: US Children's first words, and Texas' Executed Offender Information.</p>
-          <p>This website creates a space of imagination, contemplation, and introspection, from one's birth to death</p>
-          <p>what happened seems to be definable by the concrete numbers: age, execution date, date of offense, etc.</p>
-          <p>in a life that may seem abstract to others</p>
-          <p>as one carried the words one first learned. What happened happened.</p>
-          <p>What words are heard?</p>
-          <p>It is also important to note that in most cases people do not get to hear</p>
-          <p>what the victims had to say.</p>
-          <p>This website hopes to conceptually open the conversations on the debates of humanity and justice, individualism and collectivism, and more others.</p>
+          <p class="modal-paragraph">Two sets of data: US Children's first words, and Texas' Executed Offender Information.</p>
+          <p class="modal-paragraph">This website creates a space of imagination, contemplation, and introspection, from one's birth to death</p>
+          <p class="modal-paragraph">what happened seems to be definable by the concrete numbers: age, execution date, date of offense, etc.</p>
+          <p class="modal-paragraph">in a life that may seem abstract to others</p>
+          <p class="modal-paragraph">as one carried the words one first learned. What happened happened.</p>
+          <p class="modal-paragraph">What words are heard?</p>
+          <p class="modal-paragraph">It is also important to note that in most cases people do not get to hear</p>
+          <p class="modal-paragraph">what the victims had to say.</p>
+          <p class="modal-paragraph">This website hopes to conceptually open the conversations on the debates of humanity and justice, individualism and collectivism, and more others.</p>
+          <a href="https://www.tdcj.texas.gov/death_row/dr_executed_offenders.html"><p class="modal-paragraph">Link to Texas' Executed Offender Information</p></a>
+          <a href="http://wordbank.stanford.edu/"><p class="modal-paragraph">Link to Standford's Wordbank of US Children's first words</p></a>
+          <p class="modal-paragraph">Texas is the state with the most executions in the US, with 569 in total up to date.</p>
         </div>
       </div>
     </div>
 
-    <a href="#" id="section_link1_2" onclick="go1to2()" onmouseover="showDescription1()"><p class="downArrow" id="downArrow1_2">&#8615;</p></a>
-    <a href="#" id="section_link2_3" onclick="go2to3()" onmouseover="changeDescription2_2()" onmouseout="originalDescription2_2()"><p class="downArrow" id="downArrow2_3">&#8615;</p></a>
-    <a href="#" id="section_link2_1" onclick="go2to1()"><p class="upArrow" id="upArrow2_1">&#8613;</p></a>
-    <a href="#" id="section_link3_2" onclick="go3to2()" onmouseover="showDescription3_4()"><p class="upArrow" id="upArrow3_2">&#8613;</p></a>
+    <a href="#" id="section_link1_2" onclick="go1to2()" onmouseover="showDescription1()"><p class="downArrow disableSelection" id="downArrow1_2">&#8615;</p></a>
+    <a href="#" id="section_link2_3" onclick="go2to3()" onmouseover="changeDescription2_2()" onmouseout="originalDescription2_2()"><p class="downArrow disableSelection" id="downArrow2_3">&#8615;</p></a>
+    <a href="#" id="section_link2_1" onclick="go2to1()"><p class="upArrow disableSelection" id="upArrow2_1">&#8613;</p></a>
+    <a href="#" id="section_link3_2" onclick="go3to2()" onmouseover="showDescription3_4()"><p class="upArrow disableSelection" id="upArrow3_2">&#8613;</p></a>
 
     <script type="text/javascript" src="script.js"></script>
   </body>

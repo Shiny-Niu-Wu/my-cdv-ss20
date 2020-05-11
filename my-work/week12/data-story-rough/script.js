@@ -19,6 +19,7 @@ let section1 = viz.append("g")
 section1.append("text")
   .text("the")
   .attr("id", "title_the")
+  .attr("class", "disableSelection")
   .attr("x", w/2 - 60)
   .attr("y", "12vh")
   .style("text-anchor", "middle")
@@ -28,6 +29,7 @@ section1.append("text")
 section1.append("text")
   .text("FINAL")
   .attr("id", "title_final")
+  .attr("class", "disableSelection")
   .attr("x", "10vw")
   .attr("y", h/6)
   .style("text-anchor", "start")
@@ -37,6 +39,7 @@ section1.append("text")
 section1.append("text")
   .text("BLESSING")
   .attr("id", "title_blessing")
+  .attr("class", "disableSelection")
   .attr("x", "90vw")
   .attr("y", h/6)
   .style("text-anchor", "end")
@@ -59,6 +62,7 @@ section3.append("image")
 section3.append("text")
   .text("created by")
   .attr("id", "text_created")
+  .attr("class", "disableSelection")
   .attr("x", w/2)
   .attr("y", "92vh")
   .style("text-anchor", "middle")
@@ -68,6 +72,7 @@ section3.append("text")
 section3.append("text")
   .text("Shiny Shuan-Yi Wu")
   .attr("id", "text_Shiny")
+  .attr("class", "disableSelection")
   .attr("x", w/2)
   .attr("y", "95vh")
   .style("text-anchor", "middle")
@@ -165,6 +170,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text("↔")
       .attr("x", xScale(selectionIndex) - 1)
       .attr("y", (h/6)-10)
+      .attr("class", "disableSelection")
       .attr("fill", "#aaaaaa")
       .style("text-anchor", "middle")
       .style("font-size", 50)
@@ -183,6 +189,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text("Executed #" + selectedData.Execution_Number)
       .attr("x", xScale(selectionIndex) - 1)
       .attr("y", (h/6)+25)
+      .attr("class", "disableSelection")
       .attr("fill", "white")
       .style("text-anchor", "middle")
       .call(wrap, 40);
@@ -199,16 +206,25 @@ d3.csv("first-words.csv").then(function(gotData){
       .call(wrap, w*0.85);
     ;
 
-    let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
-      .append("text")
-        .text((d, i) => incomingData[i]['Last Statement'])
-        .attr("class", "all_statement")
-        .attr("x", w/2)
-        .attr("y", h/6 + 30)
-        .style("text-anchor", "middle")
-        .style("fill", "white")
-        .style("font-size", 8)
-        .call(wrap, w*0.95);
+    // let allStatement = section3.selectAll(".all_statement").data(incomingData).enter()
+    //   .append("text")
+    //     .text((d, i) => incomingData[i]['Last Statement'])
+    //     .attr("class", "all_statement")
+    //     .attr("x", w/2)
+    //     .attr("y", h/6 + 30)
+    //     .style("text-anchor", "middle")
+    //     .style("fill", "white")
+    //     .style("font-size", 8)
+    //     .call(wrap, w*0.95);
+    // ;
+    //replacing this with a screenshot of its rendering, to save page loading time
+    let allStatementImage = section3.append("image")
+      .attr("class", "allStatementImage")
+      .attr("xlink:href", "images/allStatement.png")
+      .attr("x", 0)
+      .attr("y", h/6)
+      .attr("width", w)
+      .attr("height", h/12)
     ;
 
 //drawBed
@@ -309,6 +325,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info.Age)
       .attr("x", getAgeWidth)
       .attr("y", h/6 - 10)
+      .attr("class", "bedText")
       .style("text-anchor", "end")
       .style("fill", "white")
     ;
@@ -317,6 +334,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Education Level (Highest Grade Completed)'])
       .attr("x", getEducationWidth)
       .attr("y", h/6 + 15)
+      .attr("class", "bedText")
       .style("text-anchor", "start")
       .style("fill", "white")
     ;
@@ -325,6 +343,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info.TDCJ_Number)
       .attr("x", getTDCJWidth)
       .attr("y", h/6 + 20)
+      .attr("class", "bedText")
       .style("text-anchor", "end")
       .style("fill", "white")
     ;
@@ -333,6 +352,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Age (at the time of Offense)'])
       .attr("x", getOffenceAgeWidth)
       .attr("y", h/24 + 20)
+      .attr("class", "bedText")
       .style("text-anchor", "end")
       .style("fill", "white")
     ;
@@ -341,6 +361,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Date of Birth'])
       .attr("x", w*0.25)
       .attr("y", (h/6 + h/12)/2)
+      .attr("class", "bedText")
       .style("text-anchor", "start")
       .style("fill", "white")
     ;
@@ -349,6 +370,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Date of Offense'])
       .attr("x", getOffenceDateWidth)
       .attr("y", h/12 + 30)
+      .attr("class", "bedText")
       .style("text-anchor", "start")
       .style("fill", "white")
     ;
@@ -357,6 +379,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Date Received'])
       .attr("x", getOffenceDateWidth)
       .attr("y", h/6 - 30)
+      .attr("class", "bedText")
       .style("text-anchor", "start")
       .style("fill", "white")
     ;
@@ -365,6 +388,7 @@ d3.csv("first-words.csv").then(function(gotData){
       .text(selectedData.info['Date_Executed'])
       .attr("x", getAgeWidth)
       .attr("y", (h/6 + h/12)/2)
+      .attr("class", "bedText")
       .style("text-anchor", "end")
       .style("fill", "white")
     ;
@@ -468,6 +492,7 @@ d3.csv("first-words.csv").then(function(gotData){
         .text((d, i) => d.word)
         .attr("x", 10)
         .attr("y", 10)
+        .attr("class", "enteringWord")
         .style("font-size", (d, i) => d.freq)
         // .attr("fill", "white")
         // .call(wrap, 20)
@@ -645,6 +670,7 @@ function go3to2(){
   description2_1.style.animation = "aniDescription2_1 3s";
   description2_2.style.display = "block";
   description2_2.style.animation = "aniDescription2_2 12s";
+  btn.style.display = "none";
 }
 
 function go2to1(){

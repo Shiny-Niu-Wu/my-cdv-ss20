@@ -10,6 +10,14 @@ body{
   /* height: 300vh; */
 }
 
+.disableSelection{
+  user-select: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+}
+
 #title_the{
   font-size: 30px;
 }
@@ -68,6 +76,10 @@ body{
   width: 80%;
 }
 
+.modal-paragraph::selection{
+  background-color: #4F726C;
+}
+
 /* The Close Button */
 .close {
   color: #4F726C;
@@ -90,6 +102,10 @@ body{
   padding: 1.6em;
   opacity: 90%;
   line-height: 1.2em;
+}
+
+.description-text::selection{
+  background-color: black;
 }
 
 @keyframes aniDescription1 {
@@ -162,29 +178,29 @@ body{
 
 #description3_2{
   position: fixed;
-  top: 20vh;
-  left: 91vw;
+  top: 40vh;
+  left: 89.8vw;
   display: none;
 }
 
 @keyframes aniDescription3_3 {
   0% {
     opacity: 0;
-    top: 50vh;
+    top: 65vh;
   }
   70% {
     opacity: 0;
-    top: 50vh;
+    top: 65vh;
   }
   100% {
     opacity: 90%;
-    top: 40vh;
+    top: 55vh;
   }
 }
 
 #description3_3{
   position: fixed;
-  top: 40vh;
+  top: 55vh;
   left: 84vw;
   display: none;
 }
@@ -265,6 +281,15 @@ body{
   transform: scaleX(-1); */
 }
 
-#full_statement{
-  font-family: "Helvetica Neue";
+#full_statement tspan::selection{
+  background-color: white;
+}
+
+.enteringWord::selection{
+  background-color: #4F726C;
+  fill: white;
+}
+
+.bedText::selection{
+  background-color: black;
 }
