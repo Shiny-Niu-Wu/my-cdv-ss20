@@ -494,6 +494,7 @@ d3.csv("first-words.csv").then(function(gotData){
         .attr("y", 10)
         .attr("class", "enteringWord")
         .style("font-size", (d, i) => d.freq)
+        .attr("text-anchor", "middle")
         // .attr("fill", "white")
         // .call(wrap, 20)
       ;
