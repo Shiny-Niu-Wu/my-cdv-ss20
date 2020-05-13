@@ -126,6 +126,37 @@ d3.selectAll('.brush>.handle').remove();
 // removes crosshair cursor
 d3.selectAll('.brush>.overlay').remove();
 
+// var timeoutID;
+// function delayedAlert() {
+//   window.setTimeout(repeat(), 7*1000);
+// //   window.setTimeout(function() {
+// //   alert('Hello World!');
+// // }, 500);
+// }
+
+let brushMoveIndicator = section2.append("text");
+
+// repeat();
+function repeat(){
+  brushMoveIndicator
+    .text("▼")
+    .attr("y", (h/6)-20)
+    .attr("class", "disableSelection")
+    .attr("fill", "#aaaaaa")
+    .style("text-anchor", "middle")
+    .style("font-size", 30)
+    .style("font-weight", "bold")
+    //animation
+    .transition()
+    .duration(500)
+    .attr("y", (h/6)-10)
+    .transition()
+    .delay(1000)
+    .duration(500)
+    .attr("y", (h/6)-20)
+    .on("end", repeat)
+  ;
+}
 
 d3.csv("first-words.csv").then(function(gotData){
   d3.json("last-words.json").then(function(incomingData){
@@ -166,16 +197,7 @@ d3.csv("first-words.csv").then(function(gotData){
     }
     getSelectedData();
 
-    let brushMoveIndicator = section2.append("text")
-      .text("↔")
-      .attr("x", xScale(selectionIndex) - 1)
-      .attr("y", (h/6)-10)
-      .attr("class", "disableSelection")
-      .attr("fill", "#aaaaaa")
-      .style("text-anchor", "middle")
-      .style("font-size", 50)
-      .style("font-weight", "bold")
-    ;
+    brushMoveIndicator.attr("x", xScale(selectionIndex) - 1);
 
      // function currentNumberAnchor(d, i){
      //   if (Number(selectedData.Execution_Number) >= 550) {
@@ -642,6 +664,8 @@ function go1to2(){
   description2_1.style.animation = "aniDescription2_1 3s";
   description2_2.style.display = "block";
   description2_2.style.animation = "aniDescription2_2 12s";
+  // delayedAlert();
+  d3.timeout(repeat(), 7000);
 }
 
 function go2to3(){

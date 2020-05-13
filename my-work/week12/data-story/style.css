@@ -10,6 +10,10 @@ body{
   /* height: 300vh; */
 }
 
+rect.selection:hover{
+  cursor: url(images/cursor-move.png) 15 10, auto;
+}
+
 .disableSelection{
   user-select: none;
    -webkit-user-select: none;
