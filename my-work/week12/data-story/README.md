@@ -1,6 +1,6 @@
 # The Final Blessing
 
-![alt text](https://drive.google.com/file/d/1F40L2ttBjctSQNp-aDD5pLq_E1uedC_Z/view?usp=sharing)
+![alt text](https://github.com/Shiny-Niu-Wu/my-cdv-ss20/blob/master/my-work/week12/data-story/images/animated.gif)
 
 **From the first words one may speak as an infant, to the last statement one may make on the execution bed, a timeless space in-between is created, questioning what "the final blessing" entails.**
 
